@@ -5,8 +5,6 @@ services:
                 build:
                         context: ./
                         dockerfile: docker/php-fpm/Dockerfile
-                        args:
-                            - DOCKER_PHP_VERSION=7.3
                 image: administrator_php-fpm
         
         # local
@@ -14,13 +12,11 @@ services:
                 build:
                         context: ./
                         dockerfile: docker/local/Dockerfile
-                        args:
-                                - COMPOSE_PROJECT_NAME=test
-                image: test_lcl:latest
-                container_name: test_lcl
+                image: administrator_lcl:latest
+                container_name: administrator_lcl
                 tty: true
                 ports: 
-                        - 13001:80
+                        - 10001:80
                 env_file: 
                         - administrator-deploy/.env.local
                 environment: 
@@ -33,22 +29,30 @@ services:
                         - /app/public/assets/css/
                         - /app/storage
                         - .:/app/
-                networks:
-                        - app-network
                 depends_on: 
+                        - db
                         - redis
                 links:
+                        - db
                         - redis
-
+        # mysql Service
+        db:
+                image: mysql:5.7.32
+                container_name: administrator_db
+                ports: 
+                        - 3306:3306
+                volumes:
+                        - administrator_dbdata:/var/lib/mysql
+                        - ./mysql/my.cnf:/etc/mysql/my.cnf
+                environment:
+                        - MYSQL_DATABASE=administrator
+                        - MYSQL_ROOT_PASSWORD=administrator
         # Redis Service
         redis:
                 image: redis:alpine
-                container_name: test_redis
+                container_name: administrator_redis
                 ports: 
                         - "6379"
-                networks: 
-                        - app-network
-#networks          
-networks:
-        app-network:
-                driver: bridge
+                        
+volumes:
+        administrator_dbdata:

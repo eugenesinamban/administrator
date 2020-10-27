@@ -1,5 +1,4 @@
-ARG COMPOSE_PROJECT_NAME
-FROM ${COMPOSE_PROJECT_NAME}_php-fpm:latest
+FROM administrator_php-fpm:latest
 
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     && apt-get install -y python \
