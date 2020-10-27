@@ -7,8 +7,7 @@ services:
                         dockerfile: docker/php-fpm/Dockerfile
                         args:
                             - DOCKER_PHP_VERSION=7.3
-                        # TODO change project name
-                image: test_php-fpm
+                image: administrator_php-fpm
         
         # local
         lcl:
@@ -23,7 +22,7 @@ services:
                 ports: 
                         - 13001:80
                 env_file: 
-                        - TEST-deploy/.env.local
+                        - administrator-deploy/.env.local
                 environment: 
                         - APP_ENV=local
                         - APP_DEBUG=true
@@ -44,7 +43,6 @@ services:
         # Redis Service
         redis:
                 image: redis:alpine
-                        # TODO change project name
                 container_name: test_redis
                 ports: 
                         - "6379"

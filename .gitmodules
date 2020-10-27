@@ -1,0 +1,3 @@
+[submodule "administrator-deploy"]
+	path = administrator-deploy
+	url = git@github.com:SinambanE/administrator-deploy.git
