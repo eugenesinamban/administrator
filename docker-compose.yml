@@ -1,0 +1,56 @@
+version: "3.7"
+services:       
+        # Php+Nginx Service
+        php-fpm:
+                build:
+                        context: ./
+                        dockerfile: docker/php-fpm/Dockerfile
+                        args:
+                            - DOCKER_PHP_VERSION=7.3
+                        # TODO change project name
+                image: test_php-fpm
+        
+        # local
+        lcl:
+                build:
+                        context: ./
+                        dockerfile: docker/local/Dockerfile
+                        args:
+                                - COMPOSE_PROJECT_NAME=test
+                image: test_lcl:latest
+                container_name: test_lcl
+                tty: true
+                ports: 
+                        - 13001:80
+                env_file: 
+                        - TEST-deploy/.env.local
+                environment: 
+                        - APP_ENV=local
+                        - APP_DEBUG=true
+                volumes: 
+                        - /app/vendor/
+                        - /app/node_modules/
+                        - /app/public/assets/js/
+                        - /app/public/assets/css/
+                        - /app/storage
+                        - .:/app/
+                networks:
+                        - app-network
+                depends_on: 
+                        - redis
+                links:
+                        - redis
+
+        # Redis Service
+        redis:
+                image: redis:alpine
+                        # TODO change project name
+                container_name: test_redis
+                ports: 
+                        - "6379"
+                networks: 
+                        - app-network
+#networks          
+networks:
+        app-network:
+                driver: bridge
