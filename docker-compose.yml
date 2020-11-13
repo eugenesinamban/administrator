@@ -1,6 +1,6 @@
 version: "3.7"
 services:       
-        # Php+Nginx Service
+    # Php+Nginx Service
         php-fpm:
                 build:
                         context: ./
@@ -30,9 +30,6 @@ services:
                         - /app/storage
                         - .:/app/
                 depends_on: 
-                        - db
-                        - redis
-                links:
                         - db
                         - redis
         # mysql Service
