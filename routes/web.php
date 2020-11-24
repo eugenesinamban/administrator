@@ -13,8 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index')->middleware('auth');
-
-Route::get('/home', 'PageController@index');
-
+Route::get('/', 'HomeController@index')->middleware("guest");
 Auth::routes();
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/home', 'PageController@index')->name('home');
+    Route::get('/{product}/create', 'ProductController@create')->name('add');
+    Route::post('/{product}', 'ProductController@store')->name('create');
+    Route::get('/{product}', 'ProductController@list')->name('list');
+});

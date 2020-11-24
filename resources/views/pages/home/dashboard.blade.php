@@ -1,4 +1,6 @@
 @extends('layouts.app')
 @section('content')
-Please Log in!
+<div>
+    <a href="/ramen">Ramen</a>
+</div>
 @endsection
