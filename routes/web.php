@@ -17,7 +17,7 @@ Route::get('/', 'HomeController@index')->middleware("guest");
 Auth::routes();
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/home', 'PageController@index')->name('home');
-    Route::group(['middleware' => ['check.model']], function() {
+    Route::group(['middleware' => ['check.type']], function() {
         Route::get('/{product}/create', 'ProductController@create')->name('add');
         Route::post('/{product}', 'ProductController@store')->name('create');
         Route::get('/{product}', 'ProductController@list')->name('list');

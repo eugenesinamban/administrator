@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $fillable = [
-        'text'
+        'text', 'type'
     ];
+
+    public function type() {
+        return $this->belongsTo('App\Type');
+    }
 }

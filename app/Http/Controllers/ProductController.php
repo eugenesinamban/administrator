@@ -9,10 +9,8 @@ class ProductController extends Controller
 {
 
     public function list($product) {
-        // $object =  object->getAll();
-        // return with object
-        
-        return view('pages.product.list', compact('product'));
+        $products = Product::where('type', $product)->get();
+        return view('pages.product.list', compact('product', 'products'));
     }
 
     public function create($product) {
@@ -20,11 +18,14 @@ class ProductController extends Controller
     }
 
     public function store($product, Request $request) {
+        
         $data = $request->validate([
-            'text' => ['required', 'unique:products']
+            'text' => ['required', 'unique:products'],
         ]);
-        // dd($data);
+        $data['type'] = $product;
+
         Product::create($data);
-        return redirect('list');
+
+        return redirect($product);
     }
 }

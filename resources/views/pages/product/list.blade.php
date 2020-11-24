@@ -13,19 +13,20 @@
             <th>Text</th>
             <th>Branches</th>
         </tr>
+        @forelse ($products as $product)
         <tr>
             <td><a href="#">Edit</a></td>
-            <td>1</td>
-            <td>Ichiran</td>
-            <td>32</td>
+            <td>{{ $product->id }}</td>
+            <td>{{ $product->text}}</td>
         </tr>
+        @empty
         <tr>
-            <td><a href="#">Edit</a></td>
-            <td>2</td>
-            <td>Ippuudo</td>
-            <td>30</td>
-        </tr>
-        
+            <td colspan="4">NO DATA AVAILABLE</td>    
+        </tr>            
+        @endforelse
+        @foreach ($products as $product)
+            
+        @endforeach
     </table>
 </div>
 @endsection

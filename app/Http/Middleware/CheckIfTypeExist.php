@@ -2,9 +2,11 @@
 
 namespace App\Http\Middleware;
 
+use App\Product;
+use App\Type;
 use Closure;
 
-class CheckIfModel
+class CheckIfTypeExist
 {
     /**
      * Handle an incoming request.
@@ -16,10 +18,10 @@ class CheckIfModel
     public function handle($request, Closure $next)
     {
         $product = $request->product;
-        $types = ['ramen'];
+        $types = Type::pluck('text')->toArray();
         if (!in_array($product, $types)) {
             // if not in list, redirect to dashboard
-            return redirect('/home')->withErrors(['product' => 'No Object Found!']);
+            return redirect('/home')->withErrors(['product' => 'Object Not Found!']);
         };
         
         return $next($request);
