@@ -7,15 +7,7 @@ use App\Product;
 
 class ProductController extends Controller
 {
-    public function __construct()
-    {
-        $product = request()->product;
-        $types = ['ramen'];
-        if (!in_array($product, $types)) {
-            // if not in list, redirect to dashboard
-            return redirect()->route('home')->withErrors('error', 'No Object Found!');
-        };
-    }
+
     public function list($product) {
         // $object =  object->getAll();
         // return with object

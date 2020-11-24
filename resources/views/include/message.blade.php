@@ -1,6 +1,3 @@
-@if (session('error'))
-    {{ session('error') }}
-@endif
 
 @if ($errors->any())
     <div>
