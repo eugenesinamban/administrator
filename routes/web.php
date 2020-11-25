@@ -18,8 +18,11 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/home', 'PageController@index')->name('home');
     Route::group(['middleware' => ['check.type']], function() {
-        Route::get('/{product}/create', 'ProductController@create')->name('add');
-        Route::post('/{product}', 'ProductController@store')->name('create');
-        Route::get('/{product}', 'ProductController@list')->name('list');
+        Route::get('/{slug}/create', 'ProductController@create')->name('add');
+        Route::post('/{slug}', 'ProductController@store')->name('create');
+        Route::get('/{slug}/{id}/edit', 'ProductController@edit')->name('edit');
+        Route::delete('/{slug}', 'ProductController@destroy')->name('destroy');
+        Route::patch('/{slug}', 'ProductController@update')->name('update');
+        Route::get('/{slug}', 'ProductController@list')->name('list');
     });
 });

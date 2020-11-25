@@ -1,10 +1,11 @@
-
-@if ($errors->any())
-    <div>
-        <ul class="alert alert-danger">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
     </div>
 @endif
+
+@error('product')
+    <div class="alert alert-danger">
+        {{ $message }}
+    </div>
+@enderror
