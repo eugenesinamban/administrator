@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
 <div>
-    <a href="{{ action('ProductController@create', $slug) }}">Add</a>
+    <a href="{{ action('ProductController@create', $type) }}">Add</a>
     <br>
-    {{ ucfirst($slug) }} list
+    {{ ucfirst($type->text) }} list
     <table border="1">
         <tr>
             <th>Edit</th>
@@ -12,7 +12,7 @@
         </tr>
         @forelse ($products as $product)
         <tr>
-        <td><a href={{ route('edit', [$slug, $product->id]) }}>Edit</a></td>
+        <td><a href={{ route('edit', [$type, $product->slug]) }}>Edit</a></td>
             <td>{{ $product->id }}</td>
             <td>{{ $product->text}}</td>
         </tr>

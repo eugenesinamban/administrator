@@ -3,46 +3,63 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
+use App\Models\Product;
+use App\Repositories\ProductRepository;
+use App\Models\Type;
 
 class ProductController extends Controller
 {
 
-    public function list($slug) {
-        $products = Product::where('type', $slug)->get();
-        return view('pages.product.list', compact('slug', 'products'));
+    protected $productRepository;
+
+    public function __construct(ProductRepository $productRepository)
+    {
+        $this->productRepository = $productRepository;
     }
 
-    public function create($slug) {
-        return view('pages.product.create', compact('slug'));
+    public function list(Type $type) {
+        $products = $this->productRepository->getAllProductsByType($type);
+        return view('pages.product.list', compact('type', 'products'));
     }
 
-    public function store($slug, Request $request) {
+    public function create($type) {
+        return view('pages.product.create', compact('type'));
+    }
+
+    public function store(Type $type, Request $request) {
         
-        $data = $request->validate([
-            'text' => ['required', 'unique:products'],
+        $data = $request->only([
+           'text',
+           'slug'
         ]);
-        $data['type'] = $slug;
 
-        Product::create($data);
+        $message = ['success' => 'Product Added Successfully!'];
+        $result = $this->productRepository->storeDataByType($type, $data);
 
-        return redirect($slug)->with('success', 'Product Added Successfully!');
+        return $result ?? redirect($type->slug)->with($message);
     }
 
-    public function edit($slug, $id) {
-        $product = Product::find($id);
-        return view('pages.product.edit', compact('slug', 'product'));
+    public function edit(Type $type, Product $product) {
+        return view('pages.product.edit', compact('type', 'product'));
     }
 
-    public function update($slug, Request $request) {
-        // TODO work on update
-        dd($request);
-        dd($slug);
+    public function update(Request $request, Type $type, Product $product) {
+
+        $data = $request->only([
+            'text',
+            'slug'
+        ]);
+
+        $message = ['success' => 'Product Edited Successfully!'];
+        $result = $this->productRepository->updateDataByType($type, $product, $data);
+
+        return $result ?? redirect($type->slug)->with($message);
     }
 
-    public function destroy($slug) {
-        // TODO work on destroy
-        dd($slug);
+    public function destroy(Type $type, Product $product) {
+        $result = $this->productRepository->destroyProduct($type, $product);
+        $message = ['success' => 'Product Deleted Successfully!'];
+        return $result ?? redirect($type->slug)->with($message);
     }
 
 }

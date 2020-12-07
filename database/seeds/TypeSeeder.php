@@ -1,6 +1,6 @@
 <?php
 
-use App\Type;
+use App\Models\Type;
 use Illuminate\Database\Seeder;
 
 class TypeSeeder extends Seeder
@@ -14,7 +14,7 @@ class TypeSeeder extends Seeder
     {
         $types = ['ramen'];
         foreach ($types as $type) {
-            Type::create(['text' => $type]);
+            Type::create(['text' => $type, 'slug' => $type]);
         }
     }
 }
