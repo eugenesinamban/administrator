@@ -8,7 +8,9 @@ class Product extends Model
 {
     protected $fillable = [
         'text',
-        'slug'
+        'slug',
+        'description',
+        'image_url'
     ];
 
     public function getRouteKeyName() {

@@ -30,7 +30,9 @@ class ProductController extends Controller
         
         $data = $request->only([
            'text',
-           'slug'
+           'slug',
+           'description',
+           'image'
         ]);
 
         $message = ['success' => 'Product Added Successfully!'];

@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Models\Product;
 use App\Models\Type;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class ProductRepository
 {
@@ -47,14 +48,21 @@ class ProductRepository
     public function storeDataByType(Type $type, $data) {
         $validator = Validator::make($data, [
             'text' => ['required', 'unique:products'],
-            'slug' => ['required']
+            'slug' => ['required'],
+            'description' => ['required'],
+            'image' => ['required', 'image']
         ]);
-
+        
         if ($validator->fails()) {
             return redirect($type->slug . '/create')
                 ->withErrors($validator)
                 ->withInput();
         }
+
+        $imageUrl = Storage::disk('gcs')->put('images', $data['image']);
+        
+        $data['image_url'] = $imageUrl;
+        unset($data['image']);
 
         $type->products()->create($data);
 

@@ -18,6 +18,8 @@ class CreateProductsTable extends Migration
             $table->foreignId('type_id');
             $table->string("text");
             $table->string("slug");
+            $table->string("description");
+            $table->string("image_url");
             $table->timestamps();
         });
     }

@@ -73,8 +73,15 @@
         </nav>
 
         <main class="py-4">
+
             @include('include.message')
-            @yield('content')
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-8">
+                    @yield('content')
+                </div>
+                <div class="col"></div>
+            </div>
         </main>
     </div>
 </body>
