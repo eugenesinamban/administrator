@@ -22,6 +22,10 @@ class ProductController extends Controller
         return view('pages.product.list', compact('type', 'products'));
     }
 
+    public function show(Type $type, Product $product) {
+        return view('pages.product.show', compact('product'));
+    }
+
     public function create($type) {
         return view('pages.product.create', compact('type'));
     }

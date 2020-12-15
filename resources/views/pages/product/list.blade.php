@@ -13,9 +13,9 @@
             </tr>
             @forelse ($products as $product)
             <tr>
-            <td><a href={{ route('edit', [$type, $product->slug]) }}>Edit</a></td>
+                <td><a href={{ route('edit', [$type, $product->slug]) }}>Edit</a></td>
                 <td>{{ $product->id }}</td>
-                <td>{{ $product->text}}</td>
+                <td><a href="{{ route('show', [$type, $product->slug]) }}">{{ $product->text}}</a></td>
             </tr>
             @empty
             <tr>

@@ -18,6 +18,7 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/home', 'PageController@index')->name('home');
     Route::get('/{type}/create', 'ProductController@create')->name('add');
+    Route::get('/{type}/{product}', 'ProductController@show')->name('show');
     Route::post('/{type}', 'ProductController@store')->name('create');
     Route::get('/{type}/{product}/edit', 'ProductController@edit')->name('edit');
     Route::delete('/{type}/{product}', 'ProductController@destroy')->name('destroy');
