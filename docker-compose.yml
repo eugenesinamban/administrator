@@ -38,16 +38,17 @@ services:
                 build:
                         context: ./
                         dockerfile: docker/production/Dockerfile
-                        args:
-                                - GIT_HASH=${GIT_HASH}
                 image: administrator_prd:latest
                 container_name: administrator_prd
                 tty: true
                 ports:
-                  - 10002
+                  - 10002:80
                 environment:
                         - APP_ENV=production
                         - APP_DEBUG=false
+                depends_on:
+                        - db
+                        - redis
         
         # mysql Service
         db:
