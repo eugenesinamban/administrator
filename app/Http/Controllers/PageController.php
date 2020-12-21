@@ -14,6 +14,6 @@ class PageController extends Controller
     public function index()
     {
         $types = Type::all();
-        return view('pages.home.dashboard', compact('types'));
+        return view('admin.pages.home.dashboard', compact('types'));
     }
 }

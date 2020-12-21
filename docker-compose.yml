@@ -32,6 +32,23 @@ services:
                 depends_on: 
                         - db
                         - redis
+
+        # prd
+        prd:    
+                build:
+                        context: ./
+                        dockerfile: docker/production/Dockerfile
+                        args:
+                                - GIT_HASH=${GIT_HASH}
+                image: administrator_prd:latest
+                container_name: administrator_prd
+                tty: true
+                ports:
+                  - 10002
+                environment:
+                        - APP_ENV=production
+                        - APP_DEBUG=false
+        
         # mysql Service
         db:
                 image: mysql:5.7.32

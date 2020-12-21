@@ -10908,3 +10908,40 @@ a.text-dark:focus {
   }
 }
 
+#public-app {
+  background-color: #d50000;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.banner {
+  background-image: url("/assets/images/banner.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 240px;
+  position: relative;
+}
+
+@media screen and (max-width: 1040px) {
+  .banner {
+    height: 160px;
+  }
+}
+
+.banner__text {
+  padding-left: 32px;
+  position: absolute;
+  top: 40%;
+}
+
+.card {
+  border-width: medium;
+}
+
+.image {
+  max-width: 320px;
+}
+

@@ -73,11 +73,11 @@
         </nav>
 
         <main class="py-4">
-
-            @include('include.message')
             <div class="row">
                 <div class="col"></div>
                 <div class="col-8">
+                    @include('admin.include.message')
+                    @include('admin.include.back')
                     @yield('content')
                 </div>
                 <div class="col"></div>

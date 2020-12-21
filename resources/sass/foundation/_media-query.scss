@@ -1,0 +1,38 @@
+// responsive
+$breakpoint-up: (
+  'phone': 'screen and (min-width: #{map-get($breakpoints, 'phone') + 1px})',
+  'tablet': 'screen and (min-width: #{map-get($breakpoints, 'tablet') + 1px})',
+  'desktop': 'screen and (min-width: #{map-get($breakpoints, 'desktop') + 1px})',
+) !default;
+
+// max-width
+$breakpoint-down: (
+  'phone': 'screen and (max-width: #{map-get($breakpoints, 'phone')})',
+  'tablet': 'screen and (max-width: #{map-get($breakpoints, 'tablet')})',
+  'desktop': 'screen and (max-width: #{map-get($breakpoints, 'desktop')})',
+) !default;
+
+$breakpoint-range: (
+  'phone': 'screen and (min-width: 0px) and (max-width: #{map-get($breakpoints, 'phone')})',
+  'tablet': 'screen and (min-width: #{map-get($breakpoints, 'phone') + 1px}) and (max-width: #{map-get($breakpoints, 'tablet')})',
+  'desktop': 'screen and (min-width: #{map-get($breakpoints, 'tablet') + 1px}) and (max-width: #{map-get($breakpoints, 'desktop')})',
+) !default;
+
+// @mixinの定義
+@mixin mq-up($breakpoint: tablet) {
+  @media #{map-get($breakpoint-up, $breakpoint)} {
+    @content;
+  }
+}
+
+@mixin mq-down($breakpoint: tablet) {
+  @media #{map-get($breakpoint-down, $breakpoint)} {
+    @content;
+  }
+}
+
+@mixin mq-range($breakpoint: tablet) {
+  @media #{map-get($breakpoint-range, $breakpoint)} {
+    @content;
+  }
+}

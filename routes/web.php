@@ -13,15 +13,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Public
+Route::group(['domain' => '{type}.' . env("APP_URL")], function () {
+    Route::name('external.')->group(function () {
+        Route::get('/', 'External\ProductController@index')->name('index');
+        Route::get('/{product}', 'External\ProductController@show')->name('show');
+    });
+});
+
+//Admin
 Route::get('/', 'HomeController@index')->middleware("guest");
 Auth::routes();
 Route::group(['middleware' => ['auth']], function() {
-    Route::get('/home', 'PageController@index')->name('home');
-    Route::get('/{type}/create', 'ProductController@create')->name('add');
-    Route::get('/{type}/{product}', 'ProductController@show')->name('show');
-    Route::post('/{type}', 'ProductController@store')->name('create');
-    Route::get('/{type}/{product}/edit', 'ProductController@edit')->name('edit');
-    Route::delete('/{type}/{product}', 'ProductController@destroy')->name('destroy');
-    Route::patch('/{type}/{product}', 'ProductController@update')->name('update');
-    Route::get('/{type}', 'ProductController@list')->name('list');
+    Route::prefix('admin')->group(function() {
+        Route::get('/', 'PageController@index')->name('home');
+        Route::prefix('{type}')->group(function () {
+            Route::get('/create', 'ProductController@create')->name('add');
+            Route::get('/{product}', 'ProductController@show')->name('show');
+            Route::post('/', 'ProductController@store')->name('create');
+            Route::get('/{product}/edit', 'ProductController@edit')->name('edit');
+            Route::delete('/{product}', 'ProductController@destroy')->name('destroy');
+            Route::patch('/{product}', 'ProductController@update')->name('update');
+            Route::get('/', 'ProductController@list')->name('list');
+        });
+    });
 });

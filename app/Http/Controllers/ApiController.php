@@ -17,6 +17,7 @@ class ApiController extends Controller
     }
 
     public function index(Request $request, Type $type) {
+        dump($request->id);
         $product = $this->productRepository->getAllProductsByType($type);
         return ProductResource::collection($product);
     }

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 @section('content')
 <div class="card">
     <div class="card-body">
@@ -6,7 +6,7 @@
             <form action="{{ action('ProductController@update', [$type, $product->slug]) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('patch')
-                @include('include.product-form')
+                @include('admin.include.product-form')
             </form>
         </div>
 
