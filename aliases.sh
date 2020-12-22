@@ -10,6 +10,7 @@ alias admin-lcl-bash="docker-compose exec lcl bash"
 
 alias admin-prd-build="docker-compose build php-fpm prd"
 alias admin-prd="admin-prd-build && docker-compose up -d prd"
+alias admin-prd-bash="docker-compose exec prd bash"
 
 alias admin-prd-push=" \
     docker tag administrator_prd codejunkie21/administrator_prd:latest && \

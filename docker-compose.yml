@@ -41,6 +41,8 @@ services:
                 image: administrator_prd:latest
                 container_name: administrator_prd
                 tty: true
+                # env_file:
+                #         - administrator-deploy/.env.production
                 ports:
                   - 10002:80
                 environment:

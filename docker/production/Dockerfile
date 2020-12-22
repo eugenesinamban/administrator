@@ -1,4 +1,4 @@
-FROM terakoya_php-fpm:latest
+FROM administrator_php-fpm:latest
 
 RUN  mkdir -p storage/app/public \
     && mkdir -p storage/framework/sessions \
@@ -19,7 +19,6 @@ COPY resources/views resources/views
 
 RUN /usr/bin/composer install --optimize-autoloader --no-dev
 
-#COPY php/php.overwrite.ini /usr/local/etc/php/conf.d/
 COPY docker/php-fpm/php-fpm.conf /usr/local/etc/php-fpm.d/zz-docker.conf
 COPY docker/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY docker/nginx/prod.conf /etc/nginx/sites-available/default

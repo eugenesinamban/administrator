@@ -16,7 +16,6 @@ RUN docker-php-ext-install pdo_mysql \
     && docker-php-ext-install mysqli
 
 # Install composer
-# hirak/prestissimo - Parallel processing composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ \
     && mv /usr/bin/composer.phar /usr/bin/composer
 
