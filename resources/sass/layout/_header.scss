@@ -1,16 +1,18 @@
 .banner{
-    background-image: url('/assets/images/banner.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 240px;
+    background-color: #c62828;
+    height: 160px;
     position: relative;
     @include mq-down(tablet) {
         height: 160px;
     }
     &__text {
-        padding-left: 32px;
-        position: absolute;
-        top: 40%;
+        padding-top: 40px;
+        text-align: center;
+    }
+}
+
+.navbar {
+    .container {
+        margin: 0 360px;
     }
 }

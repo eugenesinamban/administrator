@@ -31,7 +31,9 @@ class ProductRepository
     public function updateDataByType(Type $type, Product $product, $data) {
         $validator = Validator::make($data, [
             'text' => ['required'],
-            'slug' => ['required']
+            'slug' => ['required'],
+            'description' => ['required'],
+            'image' => ['image']
         ]);
 
         if ($validator->fails()) {
@@ -39,7 +41,15 @@ class ProductRepository
                 ->withErrors($validator)
                 ->withInput();
         }
-        
+
+        if (isset($data['image'])) {
+            $prevUrl = $product->image_url;
+            $newUrl = Storage::disk('gcs')->put('images', $data['image']);
+            Storage::disk('gcs')->delete($prevUrl);
+            $data['image_url'] = $newUrl;
+            unset($data['image']);
+        }
+
         $type->products->find($product)->update($data);
 
         return null;
@@ -73,5 +83,14 @@ class ProductRepository
     public function destroyProduct($type, $product) {
         $product->delete();
         return null;
+    }
+
+    public function addLikeToProduct(Product $product) {
+        if (null === request()->cookie($product->slug)) {
+            $product->likes++;
+            $product->save();
+            return true;
+        }
+        return false;
     }
 }

@@ -10909,7 +10909,7 @@ a.text-dark:focus {
 }
 
 #public-app {
-  background-color: #d50000;
+  background-color: #eeeeee;
 }
 
 a {
@@ -10917,11 +10917,8 @@ a {
 }
 
 .banner {
-  background-image: url("/assets/images/banner.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 240px;
+  background-color: #c62828;
+  height: 160px;
   position: relative;
 }
 
@@ -10932,9 +10929,28 @@ a {
 }
 
 .banner__text {
-  padding-left: 32px;
-  position: absolute;
-  top: 40%;
+  padding-top: 40px;
+  text-align: center;
+}
+
+.navbar .container {
+  margin: 0 360px;
+}
+
+.footer {
+  margin-top: 80px;
+  background-color: #000000;
+  color: #fff;
+  height: 240px;
+}
+
+.footer__text {
+  padding: 0 16px;
+  margin: 24px auto;
+}
+
+.content {
+  min-height: 480px;
 }
 
 .card {
@@ -10943,5 +10959,7 @@ a {
 
 .image {
   max-width: 320px;
+  display: block;
+  margin: 0 auto;
 }
 

@@ -17,7 +17,6 @@ if (!function_exists('imageUrl')) {
 if (!function_exists('goBack')) {
     /** 
      * back button url reconciliator
-     * @param string $url
      */
     function goBack()
     {
@@ -37,5 +36,16 @@ if (!function_exists('goBack')) {
             break;
         }
         return $path;
+    }
+
+    if (!function_exists('getSubdomain')) {
+        /** 
+         * back button url reconciliator
+         * @param string $type
+         */
+        function getSubdomain($type) {
+            $host = request()->getHttpHost();
+            return $type . '.' . $host;
+        }
     }
 }

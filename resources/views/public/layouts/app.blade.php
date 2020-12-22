@@ -22,7 +22,10 @@
 <body>
     <div id="public-app">
         @include('public.layouts.header')
-        @yield('content')
+        <div class="content">
+            @yield('content')
+        </div>
+        @include('public.layouts.footer')
     </div>
 </body>
 </html>

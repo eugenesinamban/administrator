@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Repositories\ProductRepository;
 use App\Models\Type;
+use Exception;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -25,6 +26,19 @@ class ProductController extends Controller
 
     public function show(Type $type, Product $product) {
         return view('public.product.show', compact('type', 'product'));
+    }
+
+    public function ranking(Type $type) {
+        dd($type);
+    }
+
+    public function like(Type $type, Product $product) {
+        if (!$this->productRepository->addLikeToProduct($product)) {
+            return back()->with([$product->slug => "30秒お待ちください"]);
+        }
+        $cookie = cookie($product->slug, true, 0.5);
+        return back()->cookie($cookie);
+        
     }
 
 }

@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->string("slug");
             $table->string("description");
             $table->string("image_url");
+            $table->integer("likes")->default(0);
             $table->timestamps();
         });
     }

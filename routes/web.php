@@ -18,6 +18,7 @@ Route::group(['domain' => '{type}.' . env("APP_URL")], function () {
     Route::name('external.')->group(function () {
         Route::get('/', 'External\ProductController@index')->name('index');
         Route::get('/{product}', 'External\ProductController@show')->name('show');
+        Route::post('/{product}', 'External\ProductController@like')->name('like');
     });
 });
 
