@@ -10,7 +10,8 @@ class Product extends Model
         'text',
         'slug',
         'description',
-        'image_url'
+        'image_url',
+        'likes'
     ];
 
     public function getRouteKeyName() {

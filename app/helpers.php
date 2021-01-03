@@ -14,6 +14,15 @@ if (!function_exists('imageUrl')) {
     }
 }
 
+if (!function_exists('prevSlug')) {
+    /** 
+     * returns previous page slug
+     */
+    function prevSlug() {
+        return str_replace(url('/'), '', url()->previous());
+    }
+}
+
 if (!function_exists('goBack')) {
     /** 
      * back button url reconciliator
@@ -32,6 +41,12 @@ if (!function_exists('goBack')) {
             case 'edit':
                 $path = route('list', [$type]);
                 break;
+            case 'external.show':
+                if (prevSlug() === '/ranking') {
+                    $path = route('external.ranking', [$type]);
+                } else {
+                    $path = route('external.list', [$type]);
+                }
             default:
             break;
         }

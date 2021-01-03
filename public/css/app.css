@@ -10933,8 +10933,28 @@ a {
   text-align: center;
 }
 
-.navbar .container {
-  margin: 0 360px;
+.navbar {
+  height: 48px;
+  background-color: #000000;
+  width: 100%;
+}
+
+.navbar-container {
+  max-width: 640px;
+  width: 100%;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-around;
+}
+
+.portfolio-header {
+  background-image: linear-gradient(#ffe0b2, #eeeeee);
+  height: 160px;
+  width: 100%;
+}
+
+.portfolio-header__text {
+  padding-top: 2em;
 }
 
 .footer {
@@ -10957,8 +10977,15 @@ a {
   border-width: medium;
 }
 
+.card-image {
+  border: #000000 solid medium;
+  border-radius: 5px;
+}
+
 .image {
   max-width: 320px;
+  width: 100%;
+  height: auto;
   display: block;
   margin: 0 auto;
 }

@@ -55,7 +55,8 @@ class ProductController extends Controller
             'text',
             'slug',
             'description',
-            'image'
+            'image',
+            'likes'
         ]);
 
         $message = ['success' => 'Product Edited Successfully!'];

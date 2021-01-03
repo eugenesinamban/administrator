@@ -28,14 +28,19 @@ class ProductRepository
         return $type->products;
     }
 
+    public function getAllProductsByTypeAccordingToRank(Type $type) {
+        return $type->products->sortByDesc('likes')->all();
+    }
+
     public function updateDataByType(Type $type, Product $product, $data) {
         $validator = Validator::make($data, [
             'text' => ['required'],
             'slug' => ['required'],
             'description' => ['required'],
-            'image' => ['image']
+            'image' => ['image'],
+            'likes' => ['required']
         ]);
-
+        
         if ($validator->fails()) {
             return redirect($type->slug . '/edit/' . $product->slug)
                 ->withErrors($validator)

@@ -2,8 +2,10 @@
 @section('content')
 <div class="card">
     <div class="card-body">
-        <a href="{{ action('ProductController@create', $type) }}">Add</a>
-        <br>
+        <div class="mb-4">
+            <a href="{{ action('ProductController@create', $type) }}" class="btn btn-success">Add</a>
+            <a href="/" class="btn btn-success">Add by file</a>
+        </div>
         {{ ucfirst($type->text) }} list
         <table class="table table-hover">
             <thead>

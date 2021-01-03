@@ -29,6 +29,16 @@
 </div>
 
 <div class="form-group">
+    <label>Likes</label>
+    <input type="number" name="likes" class="form-control" placeholder="likes" value="{{ $product->likes ?? old('likes') }}">
+    @error('likes')
+        <span role="alert">
+            <strong style="color: red;">{{ $message }}</strong>
+        </span>
+    @enderror
+</div>
+
+<div class="form-group">
     <label>Image</label><br>
     <img src="{{ imageUrl($product->image_url ?? null) }}" class="mb-3 image">
     <input type="file" name="image" class="form-control-file">

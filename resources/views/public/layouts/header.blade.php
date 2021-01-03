@@ -3,8 +3,9 @@
         <a href="/" class="text-light">ラーメン比較</a>
     </h1>
 </div>
-<nav class="navbar navbar-dark bg-dark mb-5">
-    <div class="">
-        <a href="/" class="navbar-brand">ホーム</a>
+<nav class="navbar mb-4">
+    <div class="navbar-container">
+        <a href="/" class="navbar-item text-light">ホーム</a>
+        <a href="/ranking" class="navbar-item text-light">ランキング</a>
     </div>
 </nav>

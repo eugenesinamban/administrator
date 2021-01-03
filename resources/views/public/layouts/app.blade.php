@@ -23,7 +23,13 @@
     <div id="public-app">
         @include('public.layouts.header')
         <div class="content">
-            @yield('content')
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-12 offset-lg-2">
+                        @yield('content')
+                    </div>
+                </div>
+            </div>
         </div>
         @include('public.layouts.footer')
     </div>

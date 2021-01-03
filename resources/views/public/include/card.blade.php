@@ -1,8 +1,8 @@
-<div class="card border-dark mb-3">
-    <h5 class="card-header">{{ $product['text'] }}</h5>
+<div class="card border-dark mb-4">
+    <h5 class="card-header bg-danger text-light">{{ $product['text'] }}</h5>
     <div class="card-body">
-        <a href="{{ route('external.show', [$type, $product]) }}" class="mb-4">
-            <img src="{{ imageUrl($product['image_url']) }}" class="image">
+        <a href="{{ route('external.show', [$type, $product]) }}">
+            <img src="{{ imageUrl($product['image_url']) }}" class="image card-image mb-4">
         </a>
         <div class="row">
             <div class="col-6">

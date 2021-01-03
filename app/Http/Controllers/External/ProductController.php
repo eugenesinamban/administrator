@@ -12,15 +12,16 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
 
-    protected $productRespository;
+    protected $productRepository;
 
-    public function __construct(ProductRepository $productRespository)
+    public function __construct(ProductRepository $productRepository)
     {
-        $this->productRepository = $productRespository;
+        $this->productRepository = $productRepository;
     }
 
     public function index(Type $type) {
         $products = $this->productRepository->getAllProductsByType($type);
+        $products = $products->sortByDesc('likes')->take(3);
         return view('public.product.index', compact('type', 'products'));
     }
 
@@ -29,7 +30,8 @@ class ProductController extends Controller
     }
 
     public function ranking(Type $type) {
-        dd($type);
+        $products = $this->productRepository->getAllProductsByTypeAccordingToRank($type);
+        return view('public.product.ranking', compact('type', 'products'));
     }
 
     public function like(Type $type, Product $product) {
