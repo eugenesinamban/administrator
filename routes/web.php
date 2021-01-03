@@ -13,21 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Public
+// Public - Products
 Route::group(['domain' => '{type}.' . env("APP_URL")], function () {
     Route::name('external.')->group(function () {
-        Route::get('/', 'External\ProductController@index')->name('index');
+        Route::get('/ranking', 'External\ProductController@ranking')->name('ranking');
+        Route::get('/', 'External\ProductController@index')->name('list');
         Route::get('/{product}', 'External\ProductController@show')->name('show');
         Route::post('/{product}', 'External\ProductController@like')->name('like');
     });
 });
 
+// Public - Portfolio
+Route::get('/', 'PortfolioController@index');
+
 //Admin
-Route::get('/', 'HomeController@index')->middleware("guest");
 Auth::routes();
 Route::group(['middleware' => ['auth']], function() {
     Route::prefix('admin')->group(function() {
-        Route::get('/', 'PageController@index')->name('home');
+        Route::get('/', 'AdminPageController@index')->name('home');
         Route::prefix('{type}')->group(function () {
             Route::get('/create', 'ProductController@create')->name('add');
             Route::get('/{product}', 'ProductController@show')->name('show');
