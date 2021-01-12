@@ -24,7 +24,7 @@ Route::group(['domain' => '{type}.' . env("APP_URL")], function () {
 });
 
 //Admin
-Auth::routes();
+Auth::routes(['register' => false]);
 Route::group(['middleware' => ['auth']], function() {
     Route::prefix('admin')->group(function() {
         Route::get('/', 'AdminPageController@index')->name('home');
