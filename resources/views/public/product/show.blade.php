@@ -2,8 +2,8 @@
 @section('content')
     <a href="{{goBack()}}" class="btn btn-light mb-3">戻る</a>
     <hr>
-    <div class="card">
-        <div class="card-header">
+    <div class="card border-dark">
+        <div class="card-header bg-danger text-light">
             {{$product->text}}
         </div>
         <div class="card-body">

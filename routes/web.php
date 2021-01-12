@@ -23,9 +23,6 @@ Route::group(['domain' => '{type}.' . env("APP_URL")], function () {
     });
 });
 
-// Public - Portfolio
-Route::get('/', 'PortfolioController@index');
-
 //Admin
 Auth::routes();
 Route::group(['middleware' => ['auth']], function() {
@@ -42,3 +39,7 @@ Route::group(['middleware' => ['auth']], function() {
         });
     });
 });
+
+// Public - Portfolio
+Route::get('/', 'PortfolioController@index');
+Route::get('/{slug}', 'PortfolioController@show');
