@@ -23,6 +23,18 @@ if (!function_exists('prevSlug')) {
     }
 }
 
+if (!function_exists('currentSlug')) {
+    /** 
+     * returns previous page slug
+     */
+    function currentSlug() {
+        if (url('/') === url()->current()) {
+            return null;
+        }
+        return str_replace(url('/') . '/', '', url()->current());
+    }
+}
+
 if (!function_exists('goBack')) {
     /** 
      * back button url reconciliator
@@ -47,6 +59,10 @@ if (!function_exists('goBack')) {
                 } else {
                     $path = route('external.list', [$type]);
                 }
+                break;
+            case 'portfolio':
+                $path = route('index');
+                break;
             default:
             break;
         }
