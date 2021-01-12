@@ -4,9 +4,10 @@
     <div class="card-body">
         <div class="mb-4">
             <a href="{{ action('ProductController@create', $type) }}" class="btn btn-success">Add</a>
-            <a href="/" class="btn btn-success">Add by file</a>
+            <a href="{{ action('ProductController@createByFile', $type) }}" class="btn btn-success">Add by file</a>
         </div>
-        {{ ucfirst($type->text) }} list
+        <h2>{{ ucfirst($type->text) }} list</h2>
+        <small>*Products in red have incomplete data</small>
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -19,7 +20,8 @@
                 @forelse ($products as $product)
                 <tr>
                     <td>{{ $product->id }}</td>
-                    <td><a href="{{ route('show', [$type, $product->slug]) }}">{{ $product->text}}</a></td>
+                    <td><a href="{{ route('show', [$type, $product->slug]) }}"><span @if (null === $product->image_url)style="color: red;"@endif>{{ $product->text }}</span>
+                    </a></td>
                     <td><a href={{ route('edit', [$type, $product->slug]) }}>Edit</a></td>
                 </tr>
                 @empty

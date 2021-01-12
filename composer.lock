@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e8788c46ebe9081f3b673e865b53d367",
+    "content-hash": "7fb2ffb5dc0e1102e92bde57dbf88308",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3235,6 +3235,58 @@
                 "source": "https://github.com/rize/UriTemplate/tree/master"
             },
             "time": "2017-06-14T03:57:53+00:00"
+        },
+        {
+            "name": "staudenmeir/laravel-upsert",
+            "version": "v1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/staudenmeir/laravel-upsert.git",
+                "reference": "d3b4e7317c6fd945d9a7a033a0a284ff080a9156"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/staudenmeir/laravel-upsert/zipball/d3b4e7317c6fd945d9a7a033a0a284ff080a9156",
+                "reference": "d3b4e7317c6fd945d9a7a033a0a284ff080a9156",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^7.0",
+                "php": "^7.2.5"
+            },
+            "require-dev": {
+                "laravel/homestead": "^10.0",
+                "orchestra/testbench": "^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Staudenmeir\\LaravelUpsert\\DatabaseServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Staudenmeir\\LaravelUpsert\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jonas Staudenmeir",
+                    "email": "mail@jonas-staudenmeir.de"
+                }
+            ],
+            "description": "Laravel UPSERT and INSERT IGNORE queries",
+            "support": {
+                "issues": "https://github.com/staudenmeir/laravel-upsert/issues",
+                "source": "https://github.com/staudenmeir/laravel-upsert/tree/v1.3"
+            },
+            "time": "2020-01-31T11:46:53+00:00"
         },
         {
             "name": "superbalist/flysystem-google-storage",

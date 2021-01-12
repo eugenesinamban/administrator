@@ -30,6 +30,10 @@ class ProductController extends Controller
         return view('admin.pages.product.create', compact('type'));
     }
 
+    public function createByFile($type) {
+        return view('admin.pages.product.file', compact('type'));
+    }
+
     public function store(Type $type, Request $request) {
         
         $data = $request->only([
@@ -41,6 +45,16 @@ class ProductController extends Controller
 
         $message = ['success' => 'Product Added Successfully!'];
         $result = $this->productRepository->storeDataByType($type, $data);
+
+        return $result ?? redirect()->route('list', [$type->slug])->with($message);
+    }
+
+    public function storeByFile(Type $type, Request $request) {
+        
+        $data = $request->only(['file']);
+
+        $message = ['success' => 'Product Added Successfully!'];
+        $result = $this->productRepository->storeDataByFile($type, $data);
 
         return $result ?? redirect()->route('list', [$type->slug])->with($message);
     }

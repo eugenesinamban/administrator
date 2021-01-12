@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use App\Imports\ProductsImport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Product;
 use App\Models\Type;
 use Illuminate\Support\Facades\Validator;
@@ -42,7 +44,8 @@ class ProductRepository
         ]);
         
         if ($validator->fails()) {
-            return redirect($type->slug . '/edit/' . $product->slug)
+            return redirect()
+                ->route('edit', [$type->slug, $product->slug])
                 ->withErrors($validator)
                 ->withInput();
         }
@@ -69,7 +72,8 @@ class ProductRepository
         ]);
         
         if ($validator->fails()) {
-            return redirect($type->slug . '/create')
+            return redirect()
+                ->route('add', [$type->slug])
                 ->withErrors($validator)
                 ->withInput();
         }
@@ -86,6 +90,22 @@ class ProductRepository
 
         return null;
 
+    }
+
+    public function storeDataByFile(Type $type, $data) {
+        $validator = Validator::make($data, [
+            'file' => ['required', 'file']
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->route('addByFile', [$type->slug])
+                ->withErrors($validator)
+                ->withInput();
+        }
+        
+        Excel::import(new ProductsImport, $data['file']);
+        return null;
     }
 
     public function destroyProduct($type, $product) {

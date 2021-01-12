@@ -49,6 +49,7 @@ if (!function_exists('goBack')) {
                 $path = route('home');
                 break;
             case 'add':
+            case 'addByFile':
             case 'show':
             case 'edit':
                 $path = route('list', [$type]);

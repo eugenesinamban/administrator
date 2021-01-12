@@ -99,7 +99,7 @@ class PortfolioController extends Controller
         $about = $this->about;
         $keys = array_keys($this->portfolio);
         if (!in_array($slug, $keys)) {
-            return redirect('/');
+            return redirect()->route('index');
         }
         $portfolio = $this->portfolio[$slug];
         return view('portfolio.show', compact('slug', 'about', 'portfolio', 'lang'));

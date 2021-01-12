@@ -30,6 +30,8 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/', 'AdminPageController@index')->name('home');
         Route::prefix('{type}')->group(function () {
             Route::get('/create', 'ProductController@create')->name('add');
+            Route::get('/create-file', 'ProductController@createByFile')->name('addByFile');
+            Route::post('/create-file', 'ProductController@storeByFile')->name('createByFile');
             Route::get('/{product}', 'ProductController@show')->name('show');
             Route::post('/', 'ProductController@store')->name('create');
             Route::get('/{product}/edit', 'ProductController@edit')->name('edit');
