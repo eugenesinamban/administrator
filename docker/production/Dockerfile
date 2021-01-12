@@ -13,6 +13,7 @@ COPY tests ./tests
 COPY config ./config
 COPY public ./public
 COPY administrator-deploy/.env.production .env.production
+COPY administrator-deploy/google-service-account.administrator.json google-service-account.administrator.json
 COPY database ./database
 COPY routes ./routes
 COPY resources/views resources/views
