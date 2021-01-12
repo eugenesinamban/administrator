@@ -65,7 +65,7 @@ class ProductRepository
             'text' => ['required', 'unique:products'],
             'slug' => ['required'],
             'description' => ['required'],
-            'image' => ['required', 'image']
+            'image' => ['image']
         ]);
         
         if ($validator->fails()) {
@@ -74,8 +74,11 @@ class ProductRepository
                 ->withInput();
         }
 
-        $imageUrl = Storage::disk('gcs')->put('images', $data['image']);
-        
+        $imageUrl = null;
+        if (isset($data['image'])) {
+            $imageUrl = Storage::disk('gcs')->put('images', $data['image']);
+        }
+
         $data['image_url'] = $imageUrl;
         unset($data['image']);
 
