@@ -51,9 +51,10 @@ class ProductRepository
         }
 
         if (isset($data['image'])) {
-            $prevUrl = $product->image_url;
+            if (null === $prevUrl = $product->image_url) {
+                Storage::disk('gcs')->delete($prevUrl);
+            };
             $newUrl = Storage::disk('gcs')->put('images', $data['image']);
-            Storage::disk('gcs')->delete($prevUrl);
             $data['image_url'] = $newUrl;
             unset($data['image']);
         }
