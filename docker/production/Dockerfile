@@ -16,6 +16,7 @@ COPY administrator-deploy/.env.production .env.production
 COPY administrator-deploy/google-service-account.administrator.json google-service-account.administrator.json
 COPY database ./database
 COPY routes ./routes
+COPY resources/lang resources/lang
 COPY resources/views resources/views
 
 RUN /usr/bin/composer install --optimize-autoloader --no-dev
