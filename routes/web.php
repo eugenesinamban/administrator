@@ -41,5 +41,8 @@ Route::group(['middleware' => ['auth']], function() {
 });
 
 // Public - Portfolio
-Route::get('/', 'PortfolioController@index');
-Route::get('/{slug}', 'PortfolioController@show');
+Route::get('/', 'PortfolioController@index')->name('index');
+Route::get('/en', 'PortfolioController@index')->name('index');
+Route::get('/ja', 'PortfolioController@index')->name('index');
+Route::get('/{slug}', 'PortfolioController@show')->name('portfolio');
+Route::get('/{slug}/{lang}', 'PortfolioController@show')->name('portfolio');

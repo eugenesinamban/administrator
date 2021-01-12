@@ -22,7 +22,7 @@
                                 <a href="{{ route('list', [$type->text]) }}">{{ ucfirst($type->text) }}</a>
                             </td>
                             <td>
-                                <a href="{{ getSubdomain($type->text) }}" target="_blank" rel="noopener">{{ getSubdomain($type->text) }}</a>
+                                <a href="http://{{ getSubdomain($type->text) }}" target="_blank" rel="noopener">{{ getSubdomain($type->text) }}</a>
                             </td>
                         </tr>
                     </tbody>

@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col">
             @foreach ($about as $line)
-                <p class="footer__text">{{ $line['english'] }}</p>
+                <p class="footer__text">{{ $line[$lang ?? 'en'] }}</p>
             @endforeach
         </div>
         <div class="col-3">
