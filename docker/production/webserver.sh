@@ -10,7 +10,7 @@ fi
 
 echo "APP_DEBUG=$APP_DEBUG" >> .env
 
-cat .env
+php artisan migrate --force
 
 service nginx start
 docker-php-entrypoint -F
