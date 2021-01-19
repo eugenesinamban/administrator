@@ -46,6 +46,7 @@ if (!function_exists('goBack')) {
         $path = '';
         switch ($route) {
             case 'user-show':
+            case 'register':
             case 'list':
                 $path = route('home');
                 break;

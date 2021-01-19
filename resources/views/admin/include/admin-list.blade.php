@@ -3,6 +3,7 @@
         User Options
     </div>
     <div class="card-body">
+        <a href="{{ route('register') }}" class="btn btn-success mb-4">Add User</a>
         <table class="table">
             <thead>
                 <tr>

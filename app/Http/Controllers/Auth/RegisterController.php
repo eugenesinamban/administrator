@@ -5,11 +5,14 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Repositories\RoleRepository;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+
 
 class RegisterController extends Controller
 {
@@ -33,14 +36,28 @@ class RegisterController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
+    protected $roleRepository;
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(RoleRepository $roleRepository)
     {
         $this->middleware('auth');
+        $this->roleRepository = $roleRepository;
+    }
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function showRegistrationForm()
+    {   
+        $roles = $this->roleRepository->getRoleNames();
+        return view('auth.register', compact('roles'));
     }
 
     /**
@@ -55,6 +72,8 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'admin' => [],
+            'annotator' => [],
         ]);
     }
 
@@ -66,11 +85,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-        ]);
+            ]);
+            
+        $roles = $this->roleRepository->getRoleNames();
+
+        foreach ($roles as $role) {
+            if (in_array($role, $data)) {
+                $user->assignRole($role);
+            }
+        }
+
+        return $user;
     }
 
     /**

@@ -1,6 +1,6 @@
 <div class="form-group">
     <label>Name</label>
-    <input type="text" name="text" class="form-control" placeholder="Enter Your Name" value="{{ $user->name ?? old('name')}}">
+    <input type="text" name="name" class="form-control" placeholder="Enter Your Name" value="{{ $user->name ?? old('name')}}">
     @error('name')
         <span role="alert">
             <strong style="color: red;">{{ $message }}</strong>
@@ -12,7 +12,7 @@
 <div class="form-group">
 @foreach ($roles as $role)
     <div class="form-check form-check-inline">
-        <input type="checkbox" class="form-check-input" name="{{ $role->name }}" value="{{ true }}"@if (in_array($role->name, $userRoles))
+        <input type="checkbox" class="form-check-input" name="{{ $role->name }}" value="{{ $role->name }}"@if (in_array($role->name, $userRoles))
             checked
         @endif>
         <label class="form-check-label">{{ $role->name }}</label>
