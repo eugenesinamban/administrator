@@ -20,7 +20,8 @@
 @endforeach
 </div>
 
-
+@hasanyrole('admin|Super Admin')
 <div>
     <input class="btn btn-success" type="submit" value="Save">
 </div>
+@endhasanyrole

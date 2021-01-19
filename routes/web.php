@@ -31,7 +31,7 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::group(['middleware' => ['auth']], function() {
     Route::prefix('admin')->group(function() {
         // Registration Routes...
-        Route::group(['middleware' => ['role:admin']], function () {
+        Route::group(['middleware' => ['role:admin|Super Admin']], function () {
             Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
             Route::post('register', 'Auth\RegisterController@register');
         });
@@ -45,7 +45,7 @@ Route::group(['middleware' => ['auth']], function() {
         // User
         Route::prefix('user')->group(function() {
             Route::get('/{user}', 'UserController@show')->name('user-show');
-            Route::post('/{user}', 'UserController@update')->name('user-update');
+            Route::post('/{user}', 'UserController@update')->name('user-update')->middleware('role:admin|Super Admin');
         });
 
         Route::prefix('{type}')->group(function () {

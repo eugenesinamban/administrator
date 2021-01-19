@@ -4,9 +4,7 @@
     <div class="col"></div>
     <div class="col-6">
         @include('admin.include.product-list', [$types])
-        @hasanyrole('admin|Super Admin')
-            @include('admin.include.admin-list', [$users])
-        @endhasanyrole
+        @include('admin.include.admin-list', [$users])
     </div>
     <div class="col"></div>
 </div>

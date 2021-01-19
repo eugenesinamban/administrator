@@ -3,12 +3,13 @@
         User Options
     </div>
     <div class="card-body">
+        @hasanyrole('admin|Super Admin')
         <a href="{{ route('register') }}" class="btn btn-success mb-4">Add User</a>
+        @endhasanyrole
         <table class="table">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Edit</th>
+                    <th colspan="2">Name</th>
                 </tr>
             </thead>
             <tbody>
@@ -18,7 +19,7 @@
                         {{ $user->name }}
                     </td>
                     <td>
-                        <a href="{{ route('user-show', [$user]) }}" class="btn btn-success">Edit</a>
+                        <a href="{{ route('user-show', [$user]) }}" class="btn btn-success">Show</a>
                     </td>
                 </tr>
                 @empty

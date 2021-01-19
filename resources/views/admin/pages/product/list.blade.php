@@ -7,7 +7,9 @@
             <a href="{{ action('ProductController@createByFile', $type) }}" class="btn btn-success">Add by file</a>
         </div>
         <h2>{{ ucfirst($type->text) }} list</h2>
+        @if (!$products->isEmpty())
         <small>*Products in red have incomplete data</small>
+        @endif
         <table class="table table-hover">
             <thead>
                 <tr>
