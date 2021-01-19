@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 
 class DevSeeder extends Seeder
 {
@@ -12,11 +13,14 @@ class DevSeeder extends Seeder
      */
     public function run()
     {
-        $user = [
+        $data = [
             'name' => 'Eugene Sinamban',
             'email' => 'eugene.sinamban@gmail.com',
             'password' => bcrypt('testtest')
         ];
-        User::create($user);
+        
+        $user = User::create($data);
+        $user->assignRole('admin');
+
     }
 }

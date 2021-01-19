@@ -23,12 +23,32 @@ Route::group(['domain' => '{type}.' . env("APP_URL")], function () {
     });
 });
 
-//Admin
-Auth::routes(['register' => false]);
+// Authentication Routes...
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
 Route::group(['middleware' => ['auth']], function() {
     Route::prefix('admin')->group(function() {
-        Route::get('/', 'AdminPageController@index')->name('home');
+        // Registration Routes...
+        Route::group(['middleware' => ['role:admin']], function () {
+            Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+            Route::post('register', 'Auth\RegisterController@register');
+        });
+
+        // Password Reset Routes...
+        Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+        Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+        Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+        Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
+        // User
+        Route::prefix('user')->group(function() {
+            Route::get('/{user}', 'UserController@show')->name('user-show');
+        });
+
         Route::prefix('{type}')->group(function () {
+            // Product 
             Route::get('/create', 'ProductController@create')->name('add');
             Route::get('/create-file', 'ProductController@createByFile')->name('addByFile');
             Route::post('/create-file', 'ProductController@storeByFile')->name('createByFile');
@@ -39,6 +59,9 @@ Route::group(['middleware' => ['auth']], function() {
             Route::patch('/{product}', 'ProductController@update')->name('update');
             Route::get('/', 'ProductController@list')->name('list');
         });
+
+        // index 
+        Route::get('/', 'AdminPageController@index')->name('home');
     });
 });
 

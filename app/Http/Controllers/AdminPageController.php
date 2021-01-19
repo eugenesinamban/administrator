@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Type;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminPageController extends Controller
@@ -14,6 +15,7 @@ class AdminPageController extends Controller
     public function index()
     {
         $types = Type::all();
-        return view('admin.pages.home.dashboard', compact('types'));
+        $users = User::all();
+        return view('admin.pages.home.dashboard', compact('types', 'users'));
     }
 }
