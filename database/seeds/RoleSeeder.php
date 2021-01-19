@@ -42,5 +42,7 @@ class RoleSeeder extends Seeder
         $annotator->givePermissionTo('read products');
         $annotator->givePermissionTo('update products');
         $annotator->givePermissionTo('delete products');
+
+        $superAdmin = Role::create(['name' => 'Super Admin']);
     }
 }

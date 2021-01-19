@@ -4,23 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Repositories\UserRepository;
+use App\Repositories\RoleRepository;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
     protected $userRepository;
+    protected $roleRepository;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepository $userRepository, RoleRepository $roleRepository)
     {
         $this->userRepository = $userRepository;
+        $this->roleRepository = $roleRepository;
     }
 
     public function show(User $user) {
-        $roles = Role::all();
-        $userRoles = $user->getRoleNames()->toArray();
-
+        $roles = $this->roleRepository->getRoles();
+        $userRoles = $this->roleRepository->getUserRoles($user)->toArray();
         return view('admin.pages.user.show', compact('user', 'roles', 'userRoles'));
     }
 

@@ -21,6 +21,7 @@ class DevSeeder extends Seeder
         
         $user = User::create($data);
         $user->assignRole('admin');
+        $user->assignRole('Super Admin');
 
     }
 }
