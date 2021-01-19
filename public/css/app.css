@@ -10908,7 +10908,7 @@ a.text-dark:focus {
   }
 }
 
-#public-app {
+.app {
   background-color: #eeeeee;
 }
 
@@ -10998,5 +10998,12 @@ a {
 .items .item {
   width: 33%;
   padding: 0 36px;
+}
+
+@media screen and (max-width: 1040px) {
+  .items .item {
+    width: 80%;
+    margin: 0 auto;
+  }
 }
 

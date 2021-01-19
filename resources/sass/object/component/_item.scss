@@ -2,6 +2,10 @@
     display: flex;
     flex-wrap: wrap;
     .item {
+        @include mq-down(tablet) {
+            width: 80%;
+            margin: 0 auto;
+        }
         width: 33%;
         padding: 0 36px;
     }

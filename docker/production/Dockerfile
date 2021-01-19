@@ -1,3 +1,13 @@
+FROM administrator_lcl:latest AS builder
+
+COPY package.json package-lock.json webpack.mix.js ./
+COPY resources/js resources/js
+COPY resources/sass resources/sass
+
+RUN npm install
+
+RUN npm run production
+
 FROM administrator_php-fpm:latest
 
 RUN  mkdir -p storage/app/public \
@@ -24,6 +34,9 @@ RUN /usr/bin/composer install --optimize-autoloader --no-dev
 COPY docker/php-fpm/php-fpm.conf /usr/local/etc/php-fpm.d/zz-docker.conf
 COPY docker/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY docker/nginx/prod.conf /etc/nginx/sites-available/default
+
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/node_modules/vue ./node_modules/vue
 
 ARG GIT_HASH
 RUN echo "${GIT_HASH}" > REVISION
