@@ -45,6 +45,7 @@ if (!function_exists('goBack')) {
         $type = request()->type;
         $path = '';
         switch ($route) {
+            case 'user-show':
             case 'list':
                 $path = route('home');
                 break;

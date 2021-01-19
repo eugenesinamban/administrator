@@ -17,7 +17,7 @@
                         {{ $user->name }}
                     </td>
                     <td>
-                        <a href="{{ route('user-show', [$user]) }}">Edit</a>
+                        <a href="{{ route('user-show', [$user]) }}" class="btn btn-success">Edit</a>
                     </td>
                 </tr>
                 @empty

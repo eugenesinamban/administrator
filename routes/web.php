@@ -45,6 +45,7 @@ Route::group(['middleware' => ['auth']], function() {
         // User
         Route::prefix('user')->group(function() {
             Route::get('/{user}', 'UserController@show')->name('user-show');
+            Route::post('/{user}', 'UserController@update')->name('user-update');
         });
 
         Route::prefix('{type}')->group(function () {

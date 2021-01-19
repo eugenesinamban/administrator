@@ -22,7 +22,7 @@
                     <td>{{ $product->id }}</td>
                     <td><a href="{{ route('show', [$type, $product->slug]) }}"><span @if (null === $product->image_url)style="color: red;"@endif>{{ $product->text }}</span>
                     </a></td>
-                    <td><a href={{ route('edit', [$type, $product->slug]) }}>Edit</a></td>
+                    <td><a href={{ route('edit', [$type, $product->slug]) }} class="btn btn-success">Edit</a></td>
                 </tr>
                 @empty
                 <tr>
