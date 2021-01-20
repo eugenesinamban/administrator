@@ -8,6 +8,7 @@
                 <img src="{{ $content['image'] }}" class="img-thumbnail">
             </a>
         </div>
+        <portfolio-item :item="{{ json_encode($content) }}"></portfolio-item>
         @endforeach
     </div>
 @endsection
