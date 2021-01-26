@@ -6,7 +6,7 @@
         </a>
         <like-bar 
             :likes="{{ json_encode($product->likes) }}"
-            :route="{{ json_encode(route('api-like', [$type, $product]))}}"
+            :route="{{ json_encode(route('external.like', [$type, $product]))}}"
             :product="{{ collect($product)->toJson() }}"
         />
     </div>

@@ -12,5 +12,3 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('/{type}/', 'ApiController@index');
-Route::post('/{type}/{product}', 'ApiController@like')->name('api-like');

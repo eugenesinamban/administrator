@@ -34,4 +34,13 @@ class ProductController extends Controller
         return view('public.product.ranking', compact('type', 'products'));
     }
 
+    public function like(Type $type, Product $product) {
+        if (!$this->productRepository->addLikeToProduct($product)) {
+            return response('error');
+        }
+        $cookie = cookie($product->slug, true, 0.1);
+        return response('approved')->cookie($cookie);
+        
+    }
+
 }

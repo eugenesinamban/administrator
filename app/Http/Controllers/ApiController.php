@@ -18,18 +18,9 @@ class ApiController extends Controller
     }
 
     public function index(Request $request, Type $type) {
-        dump($request->id);
-        $product = $this->productRepository->getAllProductsByType($type);
-        return ProductResource::collection($product);
+        $products = $this->productRepository->getAllProductsByType($type);
+        $products = $products->sortByDesc('likes')->take(3);
+        return ProductResource::collection($products);
     }
 
-    public function like(Type $type, Product $product) {
-        // dd($product);
-        if (!$this->productRepository->addLikeToProduct($product)) {
-            return response('error');
-        }
-        $cookie = cookie($product->slug, true, 0.1);
-        return response('approved')->cookie($cookie);
-        
-    }
 }
