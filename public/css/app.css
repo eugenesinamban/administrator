@@ -10969,6 +10969,49 @@ a {
   transform: scale(1.1);
 }
 
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-late-enter-active,
+.fade-late-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-late-enter,
+.fade-late-leave-to {
+  opacity: 0;
+}
+
+.type-enter-active,
+.type-leave-active {
+  -webkit-animation: type 4s steps(60, end);
+          animation: type 4s steps(60, end);
+}
+
+@-webkit-keyframes type {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes type {
+  from {
+    width: 0;
+  }
+}
+
+.type-enter,
+.type-leave {
+  opacity: 0;
+}
+
 .banner {
   background-color: #c62828;
   height: 160px;
@@ -11103,5 +11146,24 @@ a {
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
+}
+
+.portfolio-index {
+  text-align: center;
+  color: black;
+  font-family: "Courier";
+}
+
+.portfolio-index__main {
+  font-size: xx-large;
+  padding: 160px 0;
+  margin: 0 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+}
+
+.portfolio-index__sub:hover {
+  cursor: pointer;
 }
 

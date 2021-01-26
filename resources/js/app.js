@@ -21,6 +21,7 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('about-me', require('./components/portfolio/AboutMe.vue').default);
+Vue.component('portfolio-index', require('./components/portfolio/PortfolioIndex.vue').default);
 Vue.component('portfolio-item', require('./components/portfolio/PortfolioItem.vue').default);
 Vue.component('portfolio-header', require('./components/portfolio/PortfolioHeader.vue').default);
 Vue.component('portfolio', require('./components/Portfolio.vue').default);

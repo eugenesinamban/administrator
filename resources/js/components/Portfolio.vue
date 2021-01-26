@@ -1,7 +1,9 @@
 <template>
     <div class="portfolio">
         <portfolio-header @click="showPage" :items="headerItems"/>
-        <div :is="pageComponent" :items="items" :lang="lang" :about="about"></div>
+        <transition appear name="fade" mode="out-in">
+            <component :is="pageComponent" :items="items" :lang="lang" :about="about" @click="showWorks"></component>
+        </transition>
     </div>
 </template>
 
@@ -9,10 +11,13 @@
     import AboutMe from "./portfolio/AboutMe.vue";
     import PortfolioItems from "./portfolio/PortfolioItems.vue";
     import PortfolioHeader from "./portfolio/PortfolioHeader.vue";
+    import PortfolioIndex from "./portfolio/PortfolioIndex.vue";
 
     export default {
         name: 'portfolio',
         components: [
+            PortfolioItems,
+            AboutMe,
             PortfolioHeader,
         ],
         props: {
@@ -23,22 +28,27 @@
         data() {
             return {
                 headerItems: {
+                    Home: PortfolioIndex,
                     Works: PortfolioItems,
-                    "About Me": AboutMe
+                    "About Me": AboutMe,
                 },
-                pageComponent: PortfolioItems,
+                pageComponent: PortfolioIndex,
                 componentItems: this.items
             }
         },
         components: {
             PortfolioItems,
-            AboutMe
+            AboutMe,
+            PortfolioIndex,
         },
         mounted() {},
         computed: {},
         methods: {
             showPage(val) {
                 this.pageComponent = val
+            },
+            showWorks(val) {
+                this.pageComponent = this.headerItems[val]
             }
         },
     }

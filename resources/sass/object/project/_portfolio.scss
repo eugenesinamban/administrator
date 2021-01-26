@@ -1,0 +1,19 @@
+.portfolio-index {
+  text-align: center;
+  color: black;
+  font-family: "Courier";
+  &__main {
+      font-size: xx-large;
+      padding: 160px 0;
+      margin: 0 auto;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 100%;
+    }
+    
+  &__sub {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

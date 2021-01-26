@@ -1,0 +1,27 @@
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s ease;
+}
+
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+
+
+.fade-late-enter-active, .fade-late-leave-active {
+    transition: opacity .5s ease;
+}
+
+.fade-late-enter, .fade-late-leave-to {
+    opacity: 0;
+}
+
+.type-enter-active, .type-leave-active {
+    animation: type 4s steps(60, end); 
+    @keyframes type{ 
+        from { width: 0; } 
+    } 
+}
+
+.type-enter, .type-leave {
+    opacity: 0;
+}

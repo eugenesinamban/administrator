@@ -47,8 +47,6 @@
                 },
             }
         },
-        mounted() {
-            console.log(this.about)
-        }
+        mounted() {}
     }
 </script>

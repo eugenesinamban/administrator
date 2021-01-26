@@ -1940,6 +1940,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _portfolio_AboutMe_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./portfolio/AboutMe.vue */ "./resources/js/components/portfolio/AboutMe.vue");
 /* harmony import */ var _portfolio_PortfolioItems_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./portfolio/PortfolioItems.vue */ "./resources/js/components/portfolio/PortfolioItems.vue");
 /* harmony import */ var _portfolio_PortfolioHeader_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./portfolio/PortfolioHeader.vue */ "./resources/js/components/portfolio/PortfolioHeader.vue");
+/* harmony import */ var _portfolio_PortfolioIndex_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./portfolio/PortfolioIndex.vue */ "./resources/js/components/portfolio/PortfolioIndex.vue");
 var _name$components$prop;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -1951,12 +1952,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = (_name$components$prop = {
   name: 'portfolio',
-  components: [_portfolio_PortfolioHeader_vue__WEBPACK_IMPORTED_MODULE_2__["default"]],
+  components: [_portfolio_PortfolioItems_vue__WEBPACK_IMPORTED_MODULE_1__["default"], _portfolio_AboutMe_vue__WEBPACK_IMPORTED_MODULE_0__["default"], _portfolio_PortfolioHeader_vue__WEBPACK_IMPORTED_MODULE_2__["default"]],
   props: {
     items: {
       type: Object
@@ -1971,19 +1975,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       headerItems: {
+        Home: _portfolio_PortfolioIndex_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
         Works: _portfolio_PortfolioItems_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
         "About Me": _portfolio_AboutMe_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
       },
-      pageComponent: _portfolio_PortfolioItems_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+      pageComponent: _portfolio_PortfolioIndex_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
       componentItems: this.items
     };
   }
 }, _defineProperty(_name$components$prop, "components", {
   PortfolioItems: _portfolio_PortfolioItems_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-  AboutMe: _portfolio_AboutMe_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  AboutMe: _portfolio_AboutMe_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+  PortfolioIndex: _portfolio_PortfolioIndex_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
 }), _defineProperty(_name$components$prop, "mounted", function mounted() {}), _defineProperty(_name$components$prop, "computed", {}), _defineProperty(_name$components$prop, "methods", {
   showPage: function showPage(val) {
     this.pageComponent = val;
+  },
+  showWorks: function showWorks(val) {
+    this.pageComponent = this.headerItems[val];
   }
 }), _name$components$prop);
 
@@ -2050,9 +2059,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
-  mounted: function mounted() {
-    console.log(this.about);
-  }
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -2097,6 +2104,56 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     choosePage: function choosePage(val) {
       this.$emit('click', val);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/portfolio/PortfolioIndex.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/portfolio/PortfolioIndex.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'portfolio-index',
+  props: {},
+  data: function data() {
+    return {
+      timer: 4000,
+      showSub: false
+    };
+  },
+  mounted: function mounted() {
+    this.showSubDelayed();
+  },
+  computed: {},
+  methods: {
+    showWorks: function showWorks() {
+      this.$emit('click', 'Works');
+    },
+    showSubDelayed: function showSubDelayed() {
+      var _this = this;
+
+      setTimeout(function () {
+        _this.showSub = true;
+      }, this.timer);
     }
   }
 });
@@ -37835,10 +37892,18 @@ var render = function() {
         on: { click: _vm.showPage }
       }),
       _vm._v(" "),
-      _c(_vm.pageComponent, {
-        tag: "div",
-        attrs: { items: _vm.items, lang: _vm.lang, about: _vm.about }
-      })
+      _c(
+        "transition",
+        { attrs: { appear: "", name: "fade", mode: "out-in" } },
+        [
+          _c(_vm.pageComponent, {
+            tag: "component",
+            attrs: { items: _vm.items, lang: _vm.lang, about: _vm.about },
+            on: { click: _vm.showWorks }
+          })
+        ],
+        1
+      )
     ],
     1
   )
@@ -37969,6 +38034,54 @@ var render = function() {
       )
     ])
   ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/portfolio/PortfolioIndex.vue?vue&type=template&id=5501cafc&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/portfolio/PortfolioIndex.vue?vue&type=template&id=5501cafc& ***!
+  \***************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "portfolio-index" },
+    [
+      _c("transition", { attrs: { appear: "", name: "type" } }, [
+        _c("p", { staticClass: "portfolio-index__main" }, [
+          _vm._v("My name is Eugene and I will be a Full-Stack Developer")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("transition", { attrs: { name: "fade-late", mode: "out-in" } }, [
+        _vm.showSub
+          ? _c(
+              "p",
+              {
+                staticClass: "portfolio-index__sub",
+                on: { click: _vm.showWorks }
+              },
+              [_vm._v("Show Eugene's works")]
+            )
+          : _vm._e()
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -50243,6 +50356,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 Vue.component('about-me', __webpack_require__(/*! ./components/portfolio/AboutMe.vue */ "./resources/js/components/portfolio/AboutMe.vue")["default"]);
+Vue.component('portfolio-index', __webpack_require__(/*! ./components/portfolio/PortfolioIndex.vue */ "./resources/js/components/portfolio/PortfolioIndex.vue")["default"]);
 Vue.component('portfolio-item', __webpack_require__(/*! ./components/portfolio/PortfolioItem.vue */ "./resources/js/components/portfolio/PortfolioItem.vue")["default"]);
 Vue.component('portfolio-header', __webpack_require__(/*! ./components/portfolio/PortfolioHeader.vue */ "./resources/js/components/portfolio/PortfolioHeader.vue")["default"]);
 Vue.component('portfolio', __webpack_require__(/*! ./components/Portfolio.vue */ "./resources/js/components/Portfolio.vue")["default"]);
@@ -50574,6 +50688,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PortfolioHeader_vue_vue_type_template_id_d1a41f5a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PortfolioHeader_vue_vue_type_template_id_d1a41f5a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/portfolio/PortfolioIndex.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/portfolio/PortfolioIndex.vue ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PortfolioIndex_vue_vue_type_template_id_5501cafc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PortfolioIndex.vue?vue&type=template&id=5501cafc& */ "./resources/js/components/portfolio/PortfolioIndex.vue?vue&type=template&id=5501cafc&");
+/* harmony import */ var _PortfolioIndex_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PortfolioIndex.vue?vue&type=script&lang=js& */ "./resources/js/components/portfolio/PortfolioIndex.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _PortfolioIndex_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PortfolioIndex_vue_vue_type_template_id_5501cafc___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PortfolioIndex_vue_vue_type_template_id_5501cafc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/portfolio/PortfolioIndex.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/portfolio/PortfolioIndex.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/portfolio/PortfolioIndex.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PortfolioIndex_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./PortfolioIndex.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/portfolio/PortfolioIndex.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PortfolioIndex_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/portfolio/PortfolioIndex.vue?vue&type=template&id=5501cafc&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/portfolio/PortfolioIndex.vue?vue&type=template&id=5501cafc& ***!
+  \*********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PortfolioIndex_vue_vue_type_template_id_5501cafc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./PortfolioIndex.vue?vue&type=template&id=5501cafc& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/portfolio/PortfolioIndex.vue?vue&type=template&id=5501cafc&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PortfolioIndex_vue_vue_type_template_id_5501cafc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PortfolioIndex_vue_vue_type_template_id_5501cafc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
