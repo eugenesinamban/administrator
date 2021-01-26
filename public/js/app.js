@@ -2074,13 +2074,9 @@ __webpack_require__.r(__webpack_exports__);
   destroyed: function destroyed() {
     window.removeEventListener("resize", this.windowSizeGetter);
   },
-  mounted: function mounted() {
-    console.log('about me : ', this);
-  },
+  mounted: function mounted() {},
   watch: {
     windowWidth: function windowWidth(val) {
-      console.log('width : ', val);
-
       if (val > 1000) {
         this.order = null;
       } else {

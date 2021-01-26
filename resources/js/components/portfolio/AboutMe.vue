@@ -59,12 +59,9 @@
         destroyed() {
             window.removeEventListener("resize", this.windowSizeGetter);
         },
-        mounted() {
-            console.log('about me : ', this)
-        },
+        mounted() {},
         watch: {
             windowWidth(val) {
-                console.log('width : ', val)
                 if (val > 1000) {
                     this.order =  null
                 } else {
