@@ -11047,7 +11047,6 @@ a {
   background-image: linear-gradient(#ACCBE1, #CEE5F2);
   height: 160px;
   width: 100%;
-  margin-bottom: 160px;
 }
 
 .portfolio-header__text {
@@ -11165,5 +11164,9 @@ a {
 
 .portfolio-index__sub:hover {
   cursor: pointer;
+}
+
+.portfolio-container {
+  margin-top: 160px;
 }
 

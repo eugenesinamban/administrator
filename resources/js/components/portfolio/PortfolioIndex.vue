@@ -1,5 +1,5 @@
 <template>
-    <div class="portfolio-index">
+    <div class="portfolio-container portfolio-index">
         <transition appear name="type">
             <p class="portfolio-index__main">My name is Eugene and I will be a Full-Stack Developer</p>
         </transition>

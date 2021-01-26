@@ -2035,6 +2035,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'about-me',
   props: {
@@ -37930,60 +37932,68 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container mb-4 mt-4" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-4 about" }, [
-        _c("div", { staticClass: "text-center about__text" }, [
-          _vm._v(
-            "\n                " +
-              _vm._s(_vm.about[0][_vm.lang]) +
-              "\n                "
-          ),
-          _c("hr"),
-          _vm._v(
-            "\n                " +
-              _vm._s(_vm.about[1][_vm.lang]) +
-              "\n            "
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-4" }, [
-        _c("h1", { staticClass: "text-center" }, [_vm._v("Eugene Sinamban")]),
-        _vm._v(" "),
-        _c("img", {
-          staticClass: "profile-image circle",
-          attrs: { src: "/assets/images/eugene.png" }
-        }),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "text-center my-4" },
-          _vm._l(_vm.icons, function(item, index) {
-            return _c(
-              "a",
-              {
-                key: index,
-                staticClass: "text-dark mx-4 my-4",
-                attrs: { href: item.link, target: "_blank", rel: "noreferrer" }
-              },
-              [
-                _c("i", {
-                  staticClass: "fa-3x faa-tada animated-hover icon",
-                  class: item.class
-                })
-              ]
+  return _c("div", { staticClass: "portfolio-container" }, [
+    _c("div", { staticClass: "container mb-4 mt-4" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-4 about" }, [
+          _c("div", { staticClass: "text-center about__text" }, [
+            _vm._v(
+              "\n                    " +
+                _vm._s(_vm.about[0][_vm.lang]) +
+                "\n                    "
+            ),
+            _c("hr"),
+            _vm._v(
+              "\n                    " +
+                _vm._s(_vm.about[1][_vm.lang]) +
+                "\n                "
             )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-4" }, [
+          _c("h1", { staticClass: "text-center" }, [_vm._v("Eugene Sinamban")]),
+          _vm._v(" "),
+          _c("img", {
+            staticClass: "profile-image circle",
+            attrs: { src: "/assets/images/eugene.png" }
           }),
-          0
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-4 about" }, [
-        _c("p", { staticClass: "text-center about__text" }, [
-          _vm._v(
-            "\n            " + _vm._s(_vm.about[2][_vm.lang]) + "\n            "
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "text-center my-4" },
+            _vm._l(_vm.icons, function(item, index) {
+              return _c(
+                "a",
+                {
+                  key: index,
+                  staticClass: "text-dark mx-4 my-4",
+                  attrs: {
+                    href: item.link,
+                    target: "_blank",
+                    rel: "noreferrer"
+                  }
+                },
+                [
+                  _c("i", {
+                    staticClass: "fa-3x faa-tada animated-hover icon",
+                    class: item.class
+                  })
+                ]
+              )
+            }),
+            0
           )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-4 about" }, [
+          _c("p", { staticClass: "text-center about__text" }, [
+            _vm._v(
+              "\n                " +
+                _vm._s(_vm.about[2][_vm.lang]) +
+                "\n                "
+            )
+          ])
         ])
       ])
     ])
@@ -38059,7 +38069,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "portfolio-index" },
+    { staticClass: "portfolio-container portfolio-index" },
     [
       _c("transition", { attrs: { appear: "", name: "type" } }, [
         _c("p", { staticClass: "portfolio-index__main" }, [
