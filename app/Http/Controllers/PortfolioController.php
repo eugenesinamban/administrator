@@ -10,6 +10,7 @@ class PortfolioController extends Controller
 {
     public $about = [];
     public $items = [];
+    public $index = [];
 
     public function __construct()
     {
@@ -97,13 +98,25 @@ class PortfolioController extends Controller
                 'link' => 'http://eugenesinamban.com/admin',
             ]
         ];
+
+        $this->index = [
+            'main' => [
+                'en' => 'My name is Eugene and I will be a Full-Stack Developer',
+                'ja' => 'ユージンです。フルスタックエンジニアになります。',
+            ],
+            'sub' => [
+                'en' => "Show Eugene's works",
+                'ja' => '作品をみる',
+            ],
+        ];
     }
     public function index() {
 
         $items = $this->items;
         $about = $this->about;
+        $index = $this->index;
         $lang = currentSlug() ?? 'en';
-        return view('portfolio.layouts.app', compact('items', 'about', 'lang'));
+        return view('portfolio.layouts.app', compact('items', 'about', 'index', 'lang'));
     }
 
 }

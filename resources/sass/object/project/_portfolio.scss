@@ -9,6 +9,9 @@
       white-space: nowrap;
       overflow: hidden;
       width: 100%;
+      @include mq-down(tablet) {
+          font-size: medium;
+      }
     }
     
   &__sub {

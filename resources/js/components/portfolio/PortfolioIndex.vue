@@ -1,10 +1,10 @@
 <template>
     <div class="portfolio-container portfolio-index">
         <transition appear name="type">
-            <p class="portfolio-index__main">My name is Eugene and I will be a Full-Stack Developer</p>
+            <p class="portfolio-index__main">{{ index.main[lang]}}</p>
         </transition>
         <transition name="fade-late" mode="out-in">
-            <p v-if="showSub" class="portfolio-index__sub" @click="showWorks">Show Eugene's works</p>
+            <p v-if="showSub" class="portfolio-index__sub" @click="showWorks">{{ index.sub[lang] }}</p>
         </transition>
         
     </div>
@@ -13,7 +13,10 @@
 <script>
     export default {
         name: 'portfolio-index',
-        props: {},
+        props: {
+            index: {type: Object},
+            lang: {type: String},
+        },
         data() {
             return {
                 timer: 4000,

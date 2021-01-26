@@ -29,8 +29,10 @@
     background-image: linear-gradient(#ACCBE1, #CEE5F2);
     height: 160px;
     width: 100%;
-    &__text {
-        padding-top: 2em;
+    li {
+        @include mq-down(tablet) {
+            display: block;
+        }
     }
     
 }
@@ -43,5 +45,8 @@
     &:hover {
         cursor: pointer;
         transform: scale(1.1);
+    }
+    @include mq-down(tablet) {
+        padding-top: 8px;
     }
 }

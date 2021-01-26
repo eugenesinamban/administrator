@@ -11049,8 +11049,10 @@ a {
   width: 100%;
 }
 
-.portfolio-header__text {
-  padding-top: 2em;
+@media screen and (max-width: 1040px) {
+  .portfolio-header li {
+    display: block;
+  }
 }
 
 .header-item {
@@ -11063,6 +11065,12 @@ a {
 .header-item:hover {
   cursor: pointer;
   transform: scale(1.1);
+}
+
+@media screen and (max-width: 1040px) {
+  .header-item {
+    padding-top: 8px;
+  }
 }
 
 .footer {
@@ -11147,6 +11155,14 @@ a {
   transform: translate(0, -50%);
 }
 
+@media screen and (max-width: 1040px) {
+  .about__text {
+    padding-top: 80px;
+    position: unset;
+    top: auto;
+  }
+}
+
 .portfolio-index {
   text-align: center;
   color: black;
@@ -11160,6 +11176,12 @@ a {
   white-space: nowrap;
   overflow: hidden;
   width: 100%;
+}
+
+@media screen and (max-width: 1040px) {
+  .portfolio-index__main {
+    font-size: medium;
+  }
 }
 
 .portfolio-index__sub:hover {

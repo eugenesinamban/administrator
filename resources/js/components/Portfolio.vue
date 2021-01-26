@@ -2,7 +2,7 @@
     <div class="portfolio">
         <portfolio-header @click="showPage" :items="headerItems"/>
         <transition appear name="fade" mode="out-in">
-            <component :is="pageComponent" :items="items" :lang="lang" :about="about" @click="showWorks"></component>
+            <component :is="pageComponent" :index="index" :items="items" :lang="lang" :about="about" @click="showWorks"></component>
         </transition>
     </div>
 </template>
@@ -24,6 +24,7 @@
             items: {type: Object},
             about: {type: Array},
             lang: {type: String},
+            index: {type: Object},
         },
         data() {
             return {

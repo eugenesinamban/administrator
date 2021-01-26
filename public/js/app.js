@@ -1970,6 +1970,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     lang: {
       type: String
+    },
+    index: {
+      type: Object
     }
   },
   data: function data() {
@@ -2037,6 +2040,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'about-me',
   props: {
@@ -2058,10 +2063,37 @@ __webpack_require__.r(__webpack_exports__);
           link: 'https://twitter.com/codejunkie21',
           "class": 'fab fa-twitter'
         }
-      }
+      },
+      windowWidth: 0,
+      order: null
     };
   },
-  mounted: function mounted() {}
+  created: function created() {
+    window.addEventListener("resize", this.windowSizeGetter);
+  },
+  destroyed: function destroyed() {
+    window.removeEventListener("resize", this.windowSizeGetter);
+  },
+  mounted: function mounted() {
+    console.log('about me : ', this);
+  },
+  watch: {
+    windowWidth: function windowWidth(val) {
+      console.log('width : ', val);
+
+      if (val > 1000) {
+        this.order = null;
+      } else {
+        this.order = "order-first";
+      }
+    }
+  },
+  computed: {},
+  methods: {
+    windowSizeGetter: function windowSizeGetter(val) {
+      this.windowWidth = val.target.innerWidth;
+    }
+  }
 });
 
 /***/ }),
@@ -2135,7 +2167,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'portfolio-index',
-  props: {},
+  props: {
+    index: {
+      type: Object
+    },
+    lang: {
+      type: String
+    }
+  },
   data: function data() {
     return {
       timer: 4000,
@@ -37900,7 +37939,12 @@ var render = function() {
         [
           _c(_vm.pageComponent, {
             tag: "component",
-            attrs: { items: _vm.items, lang: _vm.lang, about: _vm.about },
+            attrs: {
+              index: _vm.index,
+              items: _vm.items,
+              lang: _vm.lang,
+              about: _vm.about
+            },
             on: { click: _vm.showWorks }
           })
         ],
@@ -37935,7 +37979,7 @@ var render = function() {
   return _c("div", { staticClass: "portfolio-container" }, [
     _c("div", { staticClass: "container mb-4 mt-4" }, [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-4 about" }, [
+        _c("div", { staticClass: "col-lg-4 about" }, [
           _c("div", { staticClass: "text-center about__text" }, [
             _vm._v(
               "\n                    " +
@@ -37951,42 +37995,46 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-md-4" }, [
-          _c("h1", { staticClass: "text-center" }, [_vm._v("Eugene Sinamban")]),
-          _vm._v(" "),
-          _c("img", {
-            staticClass: "profile-image circle",
-            attrs: { src: "/assets/images/eugene.png" }
-          }),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "text-center my-4" },
-            _vm._l(_vm.icons, function(item, index) {
-              return _c(
-                "a",
-                {
-                  key: index,
-                  staticClass: "text-dark mx-4 my-4",
-                  attrs: {
-                    href: item.link,
-                    target: "_blank",
-                    rel: "noreferrer"
-                  }
-                },
-                [
-                  _c("i", {
-                    staticClass: "fa-3x faa-tada animated-hover icon",
-                    class: item.class
-                  })
-                ]
-              )
+        _c("div", { staticClass: "col-lg-4", class: _vm.order }, [
+          _c("div", { staticClass: "about__main" }, [
+            _c("h1", { staticClass: "text-center" }, [
+              _vm._v("Eugene Sinamban")
+            ]),
+            _vm._v(" "),
+            _c("img", {
+              staticClass: "profile-image circle",
+              attrs: { src: "/assets/images/eugene.png" }
             }),
-            0
-          )
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "text-center my-4" },
+              _vm._l(_vm.icons, function(item, index) {
+                return _c(
+                  "a",
+                  {
+                    key: index,
+                    staticClass: "text-dark mx-4 my-4",
+                    attrs: {
+                      href: item.link,
+                      target: "_blank",
+                      rel: "noreferrer"
+                    }
+                  },
+                  [
+                    _c("i", {
+                      staticClass: "fa-3x faa-tada animated-hover icon",
+                      class: item.class
+                    })
+                  ]
+                )
+              }),
+              0
+            )
+          ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-md-4 about" }, [
+        _c("div", { staticClass: "col-lg-4 about" }, [
           _c("p", { staticClass: "text-center about__text" }, [
             _vm._v(
               "\n                " +
@@ -38073,7 +38121,7 @@ var render = function() {
     [
       _c("transition", { attrs: { appear: "", name: "type" } }, [
         _c("p", { staticClass: "portfolio-index__main" }, [
-          _vm._v("My name is Eugene and I will be a Full-Stack Developer")
+          _vm._v(_vm._s(_vm.index.main[_vm.lang]))
         ])
       ]),
       _vm._v(" "),
@@ -38085,7 +38133,7 @@ var render = function() {
                 staticClass: "portfolio-index__sub",
                 on: { click: _vm.showWorks }
               },
-              [_vm._v("Show Eugene's works")]
+              [_vm._v(_vm._s(_vm.index.sub[_vm.lang]))]
             )
           : _vm._e()
       ])
