@@ -26,10 +26,23 @@
 }
 
 .portfolio-header {
-    background-image: linear-gradient(#ffe0b2, #eeeeee);
+    background-image: linear-gradient(#ACCBE1, #CEE5F2);
     height: 160px;
     width: 100%;
+    margin-bottom: 160px;
     &__text {
         padding-top: 2em;
+    }
+    
+}
+
+.header-item {
+    display: inline;
+    padding-top: 40px;
+    font-size: x-large;
+    color: rgba($color: #000000, $alpha: 0.8);
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
     }
 }

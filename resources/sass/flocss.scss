@@ -3,6 +3,8 @@
 @import "foundation/base";
 @import "foundation/media-query";
 @import "foundation/reset";
+@import "foundation/shape";
+@import "foundation/icon";
 
 // layout
 @import "layout/header";
@@ -13,3 +15,5 @@
 @import "object/component/card";
 @import "object/component/image";
 @import "object/component/item";
+@import "object/component/profile";
+@import "object/project/about";

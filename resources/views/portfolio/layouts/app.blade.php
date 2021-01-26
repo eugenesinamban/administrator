@@ -18,14 +18,15 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/993416add2.js" crossorigin="anonymous"></script>
 </head>
-<body>
-    <div id="app" class="app">
-        @include('portfolio.layouts.header')
-        <div class="content">
-            @yield('content')
-        </div>
-        @include('portfolio.layouts.footer')
+<body class="portfolio-app">
+    <div id="app">
+        <portfolio 
+            :items="{{ collect($items)->toJson() }}"
+            :about="{{ collect($about)->toJson() }}"
+            lang="{{ $lang }}"
+        />
     </div>
 </body>
 </html>

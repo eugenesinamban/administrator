@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use function PHPSTORM_META\map;
+
 class PortfolioController extends Controller
 {
     public $about = [];
-    public $portfolio = [];
+    public $items = [];
 
     public function __construct()
     {
@@ -29,7 +31,7 @@ class PortfolioController extends Controller
 
         ];
 
-        $this->portfolio = [
+        $this->items = [
             'exchange' => [
                 'title' => "Yogi's Exchange",
                 'slug' => 'exchange',
@@ -84,24 +86,24 @@ class PortfolioController extends Controller
                 ],
                 'link' => 'https://boiling-sierra-92918.herokuapp.com/',
                 'image' => '/assets/images/corona-number-search.png'
+            ],
+            'administrator' => [
+                'title' => 'Administrator',
+                'slug' => 'admin',
+                'details' => [
+                    'en' => 'Admin page for database entries',
+                    'ja' => '管理画面',
+                ],
+                'link' => 'http://eugenesinamban.com/admin',
             ]
         ];
     }
     public function index() {
 
-        $portfolio = $this->portfolio;
+        $items = $this->items;
         $about = $this->about;
-        $lang = currentSlug();
-        return view('portfolio.index', compact('portfolio', 'about', 'lang'));
+        $lang = currentSlug() ?? 'en';
+        return view('portfolio.layouts.app', compact('items', 'about', 'lang'));
     }
 
-    public function show($slug, $lang = null) {
-        $about = $this->about;
-        $keys = array_keys($this->portfolio);
-        if (!in_array($slug, $keys)) {
-            return redirect()->route('index');
-        }
-        $portfolio = $this->portfolio[$slug];
-        return view('portfolio.show', compact('slug', 'about', 'portfolio', 'lang'));
-    }
 }
