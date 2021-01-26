@@ -13,3 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/{type}/', 'ApiController@index');
+Route::post('/{type}/{product}', 'ApiController@like')->name('api-like');

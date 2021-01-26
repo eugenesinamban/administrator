@@ -20,11 +20,21 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+
+//  includes
+Vue.component('like-button', require('./components/include/like/LikeButton.vue').default);
+Vue.component('likes', require('./components/include/like/Likes.vue').default);
+Vue.component('like-bar', require('./components/include/LikeBar.vue').default);
+
+// portfolio
 Vue.component('about-me', require('./components/portfolio/AboutMe.vue').default);
 Vue.component('portfolio-index', require('./components/portfolio/PortfolioIndex.vue').default);
 Vue.component('portfolio-item', require('./components/portfolio/PortfolioItem.vue').default);
 Vue.component('portfolio-header', require('./components/portfolio/PortfolioHeader.vue').default);
 Vue.component('portfolio', require('./components/Portfolio.vue').default);
+
+// ramen
+Vue.component('ramen', require('./components/Ramen.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

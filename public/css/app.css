@@ -11139,6 +11139,10 @@ a {
   }
 }
 
+.likes {
+  margin-top: 50px;
+}
+
 .profile-image {
   height: 300px;
   display: block;

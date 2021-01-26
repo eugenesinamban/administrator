@@ -9,15 +9,11 @@
         <div class="card-body">
             <img src="{{ imageUrl($product->image_url) }}" class="image mb-3">
             <p>{{$product->description}}</p>
-            <p class="text-right text-danger">{{ session($product->slug) }}</p>
-            <div class="row">
-                <div class="col-6 text-left">
-                    <p>Number of likes : {{ $product->likes }}</p>
-                </div>
-                <div class="col-6 text-right">
-                    @include('public.include.like', $product)
-                </div>
-            </div>
+            <like-bar 
+                :likes="{{ json_encode($product->likes) }}"
+                :route="{{ json_encode(route('api-like', [$type, $product]))}}"
+                :product="{{ collect($product)->toJson() }}"
+            />
         </div>
     </div>
 @endsection

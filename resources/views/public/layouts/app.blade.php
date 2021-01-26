@@ -21,6 +21,7 @@
 </head>
 <body>
     <div id="app" class="app">
+        {{-- <ramen/> --}}
         @include('public.layouts.header')
         <div class="content">
             <div class="container">
