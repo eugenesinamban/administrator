@@ -99,24 +99,13 @@ class PortfolioController extends Controller
             ]
         ];
 
-        $this->index = [
-            'main' => [
-                'en' => 'My name is Eugene and I will be a Full-Stack Developer',
-                'ja' => 'ユージンです。フルスタックエンジニアになります。',
-            ],
-            'sub' => [
-                'en' => "Show Eugene's works",
-                'ja' => '作品をみる',
-            ],
-        ];
     }
     public function index() {
 
         $items = $this->items;
         $about = $this->about;
-        $index = $this->index;
         $lang = currentSlug() ?? 'en';
-        return view('portfolio.layouts.app', compact('items', 'about', 'index', 'lang'));
+        return view('portfolio.layouts.app', compact('items', 'about', 'lang'));
     }
 
 }

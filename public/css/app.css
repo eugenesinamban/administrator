@@ -11050,8 +11050,8 @@ a {
 }
 
 @media screen and (max-width: 1040px) {
-  .portfolio-header li {
-    display: block;
+  .portfolio-header ul {
+    padding: 0;
   }
 }
 
@@ -11176,6 +11176,16 @@ a {
   white-space: nowrap;
   overflow: hidden;
   width: 100%;
+}
+
+.portfolio-index__main br {
+  display: none;
+}
+
+@media screen and (max-width: 1040px) {
+  .portfolio-index__main br {
+    display: block;
+  }
 }
 
 @media screen and (max-width: 1040px) {

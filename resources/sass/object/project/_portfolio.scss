@@ -9,6 +9,12 @@
       white-space: nowrap;
       overflow: hidden;
       width: 100%;
+      br {
+          display: none;
+          @include mq-down(tablet) {
+            display: block;
+          }
+        }
       @include mq-down(tablet) {
           font-size: medium;
       }

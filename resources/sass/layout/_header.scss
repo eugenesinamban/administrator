@@ -29,9 +29,9 @@
     background-image: linear-gradient(#ACCBE1, #CEE5F2);
     height: 160px;
     width: 100%;
-    li {
+    ul {
         @include mq-down(tablet) {
-            display: block;
+            padding: 0;
         }
     }
     

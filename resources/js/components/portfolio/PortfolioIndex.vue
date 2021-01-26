@@ -1,10 +1,14 @@
 <template>
     <div class="portfolio-container portfolio-index">
         <transition appear name="type">
-            <p class="portfolio-index__main">{{ index.main[lang]}}</p>
+            <p v-if="lang == 'en'" class="portfolio-index__main">My name is Eugene <br> and I will be a Full-Stack Developer</p>
+            <p v-if="lang == 'ja'" class="portfolio-index__main">ユージンです。フルスタックエンジニアになります。</p>
         </transition>
         <transition name="fade-late" mode="out-in">
-            <p v-if="showSub" class="portfolio-index__sub" @click="showWorks">{{ index.sub[lang] }}</p>
+            <p v-show="showSub" class="portfolio-index__sub" @click="showWorks">
+                <span v-if="lang == 'en'">Show Eugene's works</span>
+                <span v-if="lang == 'ja'">作品をみる</span>
+            </p>
         </transition>
         
     </div>

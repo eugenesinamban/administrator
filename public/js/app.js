@@ -2161,6 +2161,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'portfolio-index',
   props: {
@@ -38116,22 +38120,44 @@ var render = function() {
     { staticClass: "portfolio-container portfolio-index" },
     [
       _c("transition", { attrs: { appear: "", name: "type" } }, [
-        _c("p", { staticClass: "portfolio-index__main" }, [
-          _vm._v(_vm._s(_vm.index.main[_vm.lang]))
-        ])
+        _vm.lang == "en"
+          ? _c("p", { staticClass: "portfolio-index__main" }, [
+              _vm._v("My name is Eugene "),
+              _c("br"),
+              _vm._v(" and I will be a Full-Stack Developer")
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.lang == "ja"
+          ? _c("p", { staticClass: "portfolio-index__main" }, [
+              _vm._v("ユージンです。フルスタックエンジニアになります。")
+            ])
+          : _vm._e()
       ]),
       _vm._v(" "),
       _c("transition", { attrs: { name: "fade-late", mode: "out-in" } }, [
-        _vm.showSub
-          ? _c(
-              "p",
+        _c(
+          "p",
+          {
+            directives: [
               {
-                staticClass: "portfolio-index__sub",
-                on: { click: _vm.showWorks }
-              },
-              [_vm._v(_vm._s(_vm.index.sub[_vm.lang]))]
-            )
-          : _vm._e()
+                name: "show",
+                rawName: "v-show",
+                value: _vm.showSub,
+                expression: "showSub"
+              }
+            ],
+            staticClass: "portfolio-index__sub",
+            on: { click: _vm.showWorks }
+          },
+          [
+            _vm.lang == "en"
+              ? _c("span", [_vm._v("Show Eugene's works")])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.lang == "ja" ? _c("span", [_vm._v("作品をみる")]) : _vm._e()
+          ]
+        )
       ])
     ],
     1

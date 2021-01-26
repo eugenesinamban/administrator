@@ -25,7 +25,6 @@
         <portfolio 
             :items="{{ collect($items)->toJson() }}"
             :about="{{ collect($about)->toJson() }}"
-            :index="{{ collect($index)->toJson() }}"
             lang="{{ $lang }}"
         />
     </div>
