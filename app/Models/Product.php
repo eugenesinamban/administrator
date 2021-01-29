@@ -14,6 +14,10 @@ class Product extends Model
         'likes'
     ];
 
+    protected $attributes = [
+        'image_url' => '/assets/images/no_image.svg'
+    ];
+
     public function getRouteKeyName() {
         return 'slug';
     }

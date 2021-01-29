@@ -51,12 +51,10 @@ class ProductRepository
         }
 
         if (isset($data['image'])) {
-            if (null === $prevUrl = $product->image_url) {
+            if ('/assets/images/no_image.svg' === $prevUrl = $product->image_url) {
                 Storage::disk('gcs')->delete($prevUrl);
             };
-            $newUrl = Storage::disk('gcs')->put('images', $data['image']);
-            $data['image_url'] = $newUrl;
-            unset($data['image']);
+            $this->uploadImage($data);
         }
 
         $type->products->find($product)->update($data);
@@ -79,13 +77,9 @@ class ProductRepository
                 ->withInput();
         }
 
-        $imageUrl = null;
         if (isset($data['image'])) {
-            $imageUrl = Storage::disk('gcs')->put('images', $data['image']);
+            $this->uploadImage($data);
         }
-
-        $data['image_url'] = $imageUrl;
-        unset($data['image']);
 
         $type->products()->create($data);
 
@@ -121,5 +115,12 @@ class ProductRepository
             return true;
         }
         return false;
+    }
+
+    public function uploadImage(&$data) {
+        $imageBaseUrl = env("GOOGLE_CLOUD_STORAGE_URI");
+        $imageSlug = Storage::disk('gcs')->put('images', $data['image']);
+        $data['image_url'] = $imageBaseUrl . $imageSlug;
+        unset($data['image']);
     }
 }

@@ -40,7 +40,7 @@
 
 <div class="form-group">
     <label>Image</label><br>
-    <img src="{{ imageUrl($product->image_url ?? null) }}" class="mb-3 image">
+    <img src="{{ $product->image_url ?? null }}" class="mb-3 image">
     <input type="file" name="image" class="form-control-file">
     @error('image')
         <span role="alert">

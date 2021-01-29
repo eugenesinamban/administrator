@@ -7,7 +7,7 @@
             {{$product->text}}
         </div>
         <div class="card-body">
-            <img src="{{ imageUrl($product->image_url) }}" class="image mb-3">
+            <img src="{{ $product->image_url }}" class="image mb-3">
             <p>{{$product->description}}</p>
             <like-bar 
                 :likes="{{ json_encode($product->likes) }}"

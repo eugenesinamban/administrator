@@ -7,7 +7,7 @@
             <transition name="fade">
                 <p :class="error ? 'text-danger' : 'text-light'">30秒お待ちください</p>
             </transition>
-            <like-button :route="route" :product="product" @click="addLike"/>
+            <like-button :product="product" @click="addLike"/>
         </div>
     </div>
 </template>
@@ -23,7 +23,6 @@
         },
         props: {
             likes: {type: Number},
-            route: {type: String},
             product: {type: Object},
         },
         data() {

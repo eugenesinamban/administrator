@@ -13,12 +13,11 @@
         name: 'like-button',
         props: {
             product: {type: Object},
-            route: {type: String},
         },
         methods: {
             addLike() {
                 axios
-                .post(this.route)
+                .post(`/${this.product.slug}`)
                 .then(res => {
                     this.$emit('click', res.data)
                 })

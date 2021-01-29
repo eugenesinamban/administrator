@@ -8,6 +8,7 @@ alias admin-lcl-restart="docker-compose restart lcl"
 alias admin-lcl-db-bash="docker-compose exec db bash"
 alias admin-lcl-bash="docker-compose exec lcl bash"
 
+# prd
 alias admin-prd-build="docker-compose build php-fpm prd"
 alias admin-prd="admin-prd-build && docker-compose up -d prd"
 alias admin-prd-bash="docker-compose exec prd bash"

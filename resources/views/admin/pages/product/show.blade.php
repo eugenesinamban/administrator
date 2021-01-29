@@ -5,7 +5,7 @@
         <div class="card-body">
             <div class="mb-4">
                 <p>Product Image : </p>
-                <img src="{{ imageUrl($product->image_url) }}" class="image">
+                <img src="{{ $product->image_url }}" class="image">
                 <hr>
             </div>
             <div class="mb-4">

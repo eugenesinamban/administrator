@@ -22,7 +22,7 @@
                 @forelse ($products as $product)
                 <tr>
                     <td>{{ $product->id }}</td>
-                    <td><a href="{{ route('show', [$type, $product->slug]) }}"><span @if (null === $product->image_url)style="color: red;"@endif>{{ $product->text }}</span>
+                    <td><a href="{{ route('show', [$type, $product->slug]) }}"><span @if (Str::contains($product->image_url, 'no_image'))style="color: red;"@endif>{{ $product->text }}</span>
                     </a></td>
                     <td><a href={{ route('edit', [$type, $product->slug]) }} class="btn btn-success">Edit</a></td>
                 </tr>
