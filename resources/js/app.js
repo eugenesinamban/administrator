@@ -21,10 +21,18 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
+<<<<<<< Updated upstream
 // //  includes
 // Vue.component('like-button', require('./components/include/like/LikeButton.vue').default);
 // Vue.component('likes', require('./components/include/like/Likes.vue').default);
 // Vue.component('like-bar', require('./components/include/LikeBar.vue').default);
+=======
+//  includes
+Vue.component('like-button', require('./components/include/like/LikeButton.vue').default);
+Vue.component('likes', require('./components/include/like/Likes.vue').default);
+Vue.component('like-bar', require('./components/include/LikeBar.vue').default);
+Vue.component('card', require('./components/include/Card.vue').default);
+>>>>>>> Stashed changes
 
 // // portfolio
 // Vue.component('about-me', require('./components/portfolio/AboutMe.vue').default);
