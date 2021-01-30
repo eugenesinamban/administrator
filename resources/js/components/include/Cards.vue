@@ -1,6 +1,6 @@
 <template>
     <div class="cards">
-        <card v-for="product in products" :type="type" :product="product" :key="product.id" />
+        <card v-for="(product, rank) in products" :type="type" :product="product" :key="product.text" :rank="rank"/>
     </div>
 </template>
 <script>

@@ -11030,7 +11030,9 @@ a {
 }
 
 .navbar {
-  height: 48px;
+  height: 40px;
+  padding-top: 0;
+  padding-bottom: 0;
   background-color: #000000;
   width: 100%;
 }
@@ -11041,6 +11043,17 @@ a {
   display: flex;
   margin: 0 auto;
   justify-content: space-around;
+}
+
+.navbar-item {
+  text-align: center;
+  padding: 8px 0;
+  width: 100%;
+  transition: all 0.5s linear;
+}
+
+.navbar-item:hover {
+  background-color: #424242;
 }
 
 .portfolio-header {

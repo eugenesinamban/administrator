@@ -2075,6 +2075,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'card',
@@ -2087,14 +2090,13 @@ __webpack_require__.r(__webpack_exports__);
     },
     type: {
       Type: Object
-    } // rank: {type: Number},
-    // likeRoute: {type: String},
-    // showRoute: {type: String},
-    // imageUrl: {type: String},
-
+    },
+    rank: {
+      Type: Number
+    }
   },
   mounted: function mounted() {
-    console.log(this.showRoute);
+    console.log('card : ', this);
   },
   computed: {
     showRoute: function showRoute() {
@@ -38275,28 +38277,32 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card border-dark mb-4" }, [
-    _c("h5", { staticClass: "card-header bg-danger text-light" }, [
-      _vm._v(_vm._s(_vm.product.text))
-    ]),
+  return _c("div", [
+    _c("h2", [_vm._v("# " + _vm._s(_vm.rank + 1))]),
     _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "card-body" },
-      [
-        _c("a", { attrs: { href: _vm.showRoute } }, [
-          _c("img", {
-            staticClass: "image card-image mb-4",
-            attrs: { src: _vm.product.image_url }
+    _c("div", { staticClass: "card border-dark mb-4" }, [
+      _c("h5", { staticClass: "card-header bg-danger text-light" }, [
+        _vm._v(_vm._s(_vm.product.text))
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "card-body" },
+        [
+          _c("a", { attrs: { href: _vm.showRoute } }, [
+            _c("img", {
+              staticClass: "image card-image mb-4",
+              attrs: { src: _vm.product.image_url }
+            })
+          ]),
+          _vm._v(" "),
+          _c("like-bar", {
+            attrs: { likes: _vm.product.likes, product: _vm.product }
           })
-        ]),
-        _vm._v(" "),
-        _c("like-bar", {
-          attrs: { likes: _vm.product.likes, product: _vm.product }
-        })
-      ],
-      1
-    )
+        ],
+        1
+      )
+    ])
   ])
 }
 var staticRenderFns = []
@@ -38324,10 +38330,10 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "cards" },
-    _vm._l(_vm.products, function(product) {
+    _vm._l(_vm.products, function(product, rank) {
       return _c("card", {
-        key: product.id,
-        attrs: { type: _vm.type, product: product }
+        key: product.text,
+        attrs: { type: _vm.type, product: product, rank: rank }
       })
     }),
     1

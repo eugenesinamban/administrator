@@ -31,6 +31,8 @@ class ProductController extends Controller
 
     public function ranking(Type $type) {
         $products = $this->productRepository->getAllProductsByTypeAccordingToRank($type);
+        // dump($type);
+        // dd($products);
         return view('public.product.ranking', compact('type', 'products'));
     }
 

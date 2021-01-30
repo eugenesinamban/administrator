@@ -31,7 +31,7 @@ class ProductRepository
     }
 
     public function getAllProductsByTypeAccordingToRank(Type $type) {
-        return $type->products->sortByDesc('likes')->all();
+        return collect($type->products->sortByDesc('likes')->all());
     }
 
     public function updateDataByType(Type $type, Product $product, $data) {

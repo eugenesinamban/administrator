@@ -1,19 +1,5 @@
 <?php
 
-if (!function_exists('imageUrl')) {
-    /** 
-     * asset wrapper for images
-     * @param string $url
-     */
-    function imageUrl($url)
-    {
-        $noImage = "/assets/images/no_image.svg";
-        $googleUrl = env("GOOGLE_CLOUD_STORAGE_URI");
-        $imagePath = $url ? $googleUrl . $url : $noImage;
-        return $imagePath;
-    }
-}
-
 if (!function_exists('prevSlug')) {
     /** 
      * returns previous page slug
