@@ -18,9 +18,9 @@ alias admin-prd-push=" \
     docker push codejunkie21/administrator_prd:latest
 "
 # deploy
-alias admin-prd-deploy="mr-prd-build && mr-prd-push"
+alias admin-prd-deploy="admin-prd-build && admin-prd-push"
 
-function mr-prd-build() {
+function admin-prd-build() {
   git fetch origin master
   ORIGIN_MASTER=$(git show-ref origin/master -s)
   CURRENT=$(git rev-parse HEAD)
