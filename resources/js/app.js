@@ -21,35 +21,16 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
-<<<<<<< Updated upstream
-// //  includes
-// Vue.component('like-button', require('./components/include/like/LikeButton.vue').default);
-// Vue.component('likes', require('./components/include/like/Likes.vue').default);
-// Vue.component('like-bar', require('./components/include/LikeBar.vue').default);
-=======
-//  includes
-Vue.component('like-button', require('./components/include/like/LikeButton.vue').default);
-Vue.component('likes', require('./components/include/like/Likes.vue').default);
-Vue.component('like-bar', require('./components/include/LikeBar.vue').default);
-Vue.component('card', require('./components/include/Card.vue').default);
->>>>>>> Stashed changes
-
-// // portfolio
-// Vue.component('about-me', require('./components/portfolio/AboutMe.vue').default);
-// Vue.component('portfolio-index', require('./components/portfolio/PortfolioIndex.vue').default);
-// Vue.component('portfolio-item', require('./components/portfolio/PortfolioItem.vue').default);
-// Vue.component('portfolio-header', require('./components/portfolio/PortfolioHeader.vue').default);
-// Vue.component('portfolio', require('./components/Portfolio.vue').default);
-
-// // ramen
-// Vue.component('ramen', require('./components/Ramen.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
+const configuration = {
+    author: "eugene"
+}
 const app = new Vue({
     el: '#app',
+    // configuration
 });
