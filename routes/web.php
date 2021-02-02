@@ -28,6 +28,13 @@ Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
+// PHP TEST
+Route::prefix('php-test')->group(function() {
+    Route::get('/', "PhpTestController@index");
+    Route::post('/', "PhpTestController@store");
+    Route::delete('/{message}', "PhpTestController@delete");
+});
+
 Route::group(['middleware' => ['auth']], function() {
     Route::prefix('admin')->group(function() {
         // Registration Routes...
