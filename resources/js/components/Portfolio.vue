@@ -1,6 +1,7 @@
 <template>
     <div class="portfolio">
         <portfolio-header @click="showPage" :items="headerItems"/>
+        <!-- <burger/> -->
         <transition appear name="fade" mode="out-in">
             <component :is="pageComponent" :index="index" :items="items" :lang="lang" :about="about" @click="showWorks"></component>
         </transition>
@@ -12,6 +13,7 @@
     import PortfolioItems from "./portfolio/PortfolioItems.vue";
     import PortfolioHeader from "./portfolio/PortfolioHeader.vue";
     import PortfolioIndex from "./portfolio/PortfolioIndex.vue";
+    import Burger from './include/Burger.vue'
 
     export default {
         name: 'portfolio',
@@ -19,6 +21,7 @@
             PortfolioItems,
             AboutMe,
             PortfolioHeader,
+            Burger
         ],
         props: {
             items: {type: Object},

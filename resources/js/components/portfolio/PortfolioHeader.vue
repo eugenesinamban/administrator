@@ -20,13 +20,6 @@
         props: {
             items : {type: Object},
         },
-        data() {
-            return {
-                
-            }
-        },
-        mounted() {},
-        computed: {},
         methods: {
             choosePage(val) {
                 this.$emit('click', val)

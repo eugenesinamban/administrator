@@ -11063,6 +11063,12 @@ a {
 }
 
 @media screen and (max-width: 1040px) {
+  .portfolio-header {
+    height: 80px;
+  }
+}
+
+@media screen and (max-width: 1040px) {
   .portfolio-header ul {
     padding: 0;
   }
