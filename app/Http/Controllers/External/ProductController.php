@@ -20,8 +20,8 @@ class ProductController extends Controller
     }
 
     public function index(Type $type) {
-        $products = $this->productRepository->getAllProductsByType($type);
-        $products = $products->sortByDesc('likes')->take(3);
+        $products = $this->productRepository->getAllProductsByTypeAccordingToRank($type);
+        $products = $products->values()->take(3);
         return view('public.product.index', compact('type', 'products'));
     }
 
@@ -31,8 +31,7 @@ class ProductController extends Controller
 
     public function ranking(Type $type) {
         $products = $this->productRepository->getAllProductsByTypeAccordingToRank($type);
-        // dump($type);
-        // dd($products);
+        $products = collect($products->values()->all());
         return view('public.product.ranking', compact('type', 'products'));
     }
 

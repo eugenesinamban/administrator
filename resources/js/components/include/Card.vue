@@ -28,16 +28,10 @@
             type: { Type: Object },
             rank: { Type: Number },
         },
-        mounted() {
-            console.log('card : ', this)
-        },
         computed: {
             showRoute() {
                 return `/${this.product.slug}`
             }
-        },
-        methods: {
-            
         },
     }
 </script>

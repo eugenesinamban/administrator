@@ -2117,15 +2117,11 @@ __webpack_require__.r(__webpack_exports__);
       Type: Number
     }
   },
-  mounted: function mounted() {
-    console.log('card : ', this);
-  },
   computed: {
     showRoute: function showRoute() {
       return "/".concat(this.product.slug);
     }
-  },
-  methods: {}
+  }
 });
 
 /***/ }),

@@ -10952,6 +10952,10 @@ a.text-dark:focus {
   background-color: #CEE5F2;
 }
 
+.text-light {
+  color: #fff !important;
+}
+
 a {
   text-decoration: none !important;
 }
