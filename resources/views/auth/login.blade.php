@@ -67,6 +67,23 @@
                     </form>
                 </div>
             </div>
+            <div class="card mt-4">
+                <div class="card-header">
+                    テストアカウント
+                </div>
+                <div class="card-body">
+                    <div class="mt-2">
+                        Admin アカウント: <br>
+                        メールアドレス：admin@admin.com <br>
+                        パスワード：testtest <br>
+                    </div>
+                    <div class="mt-4">
+                        Annotator アカウント: <br>
+                        メールアドレス：annotator@annotator.com <br>
+                        パスワード：testtest <br>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
