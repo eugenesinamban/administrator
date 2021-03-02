@@ -5,7 +5,7 @@
     @foreach ($messages as $message)
         {{ $message->title }} <br>
         {{ $message->name }} <br>
-        {{ $message->mesage }} <br>
+        {{ $message->message }} <br>
         <form action="{{ action('PhpTestController@delete', [$message])}}" method="POST">
         @csrf
         @method('delete')
